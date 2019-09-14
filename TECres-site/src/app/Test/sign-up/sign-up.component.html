@@ -1,0 +1,52 @@
+<div class="jumbotron">
+  <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-5">
+          <label>User name</label>
+          <input name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" class="form-control" required>
+          <div class="validation-error" *ngIf="UserName.invalid && UserName.touched">
+            this field is required
+          </div>
+        </div>
+        <div class="col-md-5">
+          <label>Password</label>
+          <input name="Password" type="password" #Password="ngModel" [(ngModel)]="user.Password" class="form-control" required
+            minlength="6">
+          <!-- <label [attr.data-error]="Password.errors!=null?(Password.errors.required?'Required field':'Minimum 6 characters required'):''"></label>  -->
+          <div class="validation-error" *ngIf="Password.invalid && Password.touched">
+            this field is required
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <label>Email</label>
+        <input name="Email" #Email="ngModel" [(ngModel)]="user.Email" class="form-control" required>
+        <div class="validation-error" *ngIf="Email.invalid && Email.touched">
+          this field is required
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <label>First name</label>
+          <input name="FirstName" #FirstName="ngModel" [(ngModel)]="user.FirstName" class="form-control" required>
+          <div class="validation-error" *ngIf="FirstName.invalid && FirstName.touched">
+            this field is required
+          </div>
+        </div>
+        <div class="col-md-5">
+          <label>Last name</label>
+          <input name="LastName" #LastName="ngModel" [(ngModel)]="user.LastName" class="form-control" required>
+          <div class="validation-error" *ngIf="LastName.invalid && LastName.touched">
+            this field is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block">SUBMIT</button>
+      </div>
+    </div>
+  </form>
+</div>

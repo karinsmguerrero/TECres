@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace TECres_api
 {
@@ -9,6 +10,7 @@ namespace TECres_api
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers:"*", methods:"*"));
             // Configuración y servicios de API web
 
             // Rutas de API web
