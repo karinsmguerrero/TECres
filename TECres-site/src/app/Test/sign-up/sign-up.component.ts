@@ -31,6 +31,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    alert("Attempting submit");
     this.service.registerUser(form.value)
       .subscribe((data: any) => {
         if (data.Succeeded == true) {
