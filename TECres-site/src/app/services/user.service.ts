@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';
 import { User } from '../models/user.model';
@@ -21,5 +21,12 @@ export class UserService {
     }
 
     return this.http.post(this.rootURL + '/api/User/Register', body);
+  }
+
+  userAuthentication(username, password){
+    var data = "username=" + username + "&password=" + password +
+    "&grant_type=password";
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
+    return this.http.post(this.rootURL + '/token', data, { headers: reqHeader });
   }
 }
