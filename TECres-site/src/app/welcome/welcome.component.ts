@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -11,17 +11,11 @@ export class WelcomeComponent implements OnInit {
 
   userClaims : any;
 
-  constructor(private router : Router, private userService : UserService) { }
+  constructor( private userService : UserService, private router : Router) { }
 
   ngOnInit() {
     this.userService.getUserClaims().subscribe((data : any) => {
       this.userClaims = data;
     });
   }
-
-  Logout(){
-    localStorage.removeItem('userToken');
-    this.router.navigate(['/signin']);
-  }
-
 }

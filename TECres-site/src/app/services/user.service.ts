@@ -14,13 +14,14 @@ export class UserService {
   Objetivo: registrar usuarios nuevos
   Parámetros: user : User => objeto de tipo User que contiene los datos del usuario
   */
-  registerUser(user: User) {
-    const body: User = {
+  registerUser(user: User, roles : string[]) {
+    const body = {
       UserName: user.UserName,
       Password: user.Password,
       Email: user.Email,
       FirstName: user.FirstName,
-      LastName: user.LastName
+      LastName: user.LastName,
+      Roles : roles
     }
     var reqHeader = new HttpHeaders({'No-Auth':'True'});
     return this.http.post(this.rootURL + '/api/User/Register', body, {headers : reqHeader});
@@ -47,4 +48,28 @@ export class UserService {
   getUserClaims(){
     return this.http.get(this.rootURL+ '/api/GetUserClaims');
   }
+
+  /*
+  Código tomado de: https://www.youtube.com/watch?v=Ks5ADKqPrBQ
+  Objetivo: obtener los roles desde la base de datos
+  Parámetros: ninguno
+  */
+  getAllRoles() {
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.get(this.rootURL + '/api/GetAllRoles', { headers: reqHeader });
+  }
+
+  roleMatch(allowedRoles): boolean {
+    var isMatch = false;
+    var userRoles: string[] = JSON.parse(localStorage.getItem('userRole'));
+    allowedRoles.forEach(element => {
+      if (userRoles.indexOf(element) > -1) {
+        isMatch = true;
+        return false;
+      }
+    });
+    return isMatch;
+
+  }
+
 }

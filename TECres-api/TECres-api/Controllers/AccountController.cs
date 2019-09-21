@@ -28,6 +28,8 @@ namespace TECres_api.Controllers
                 RequiredLength = 6
             };
             IdentityResult result = manager.Create(user, model.Password);
+            manager.AddToRoles(user.Id, model.Roles);
+            
             return result;
         }
 
@@ -43,9 +45,26 @@ namespace TECres_api.Controllers
                 Email = identityClaims.FindFirst("Email").Value,
                 FirstName = identityClaims.FindFirst("FirstName").Value,
                 LastName = identityClaims.FindFirst("LastName").Value,
-                LoggedOn = identityClaims.FindFirst("LoggedOn").Value
+                LoggedOn = identityClaims.FindFirst("LoggedOn").Value,
             };
             return model;
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("api/ForAdminRole")]
+        public string ForAdminRole()
+        {
+            return "for admin role";
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Customer")]
+        [Route("api/ForCustomerRole")]
+        public string ForCustomerRole()
+        {
+            return "For curstomer role";
+        }
+
     }
 }

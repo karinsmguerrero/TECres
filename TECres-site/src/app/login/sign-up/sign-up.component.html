@@ -42,6 +42,14 @@
       </div>
     </div>
   </div>
+  <div class="row" *ngIf="roles">
+    <ul>
+      <li *ngFor="let item of roles;let i = index">
+        <input type="checkbox" [id]="'roles-'+i" value="{{item.Id}}" [checked]="item.selected"  (change)="updateSelectedRoles(i)">
+        <label [for]="'roles-'+i">{{item.Name}}</label>
+      </li>
+    </ul>
+  </div>
   <div class="row">
     <div class="form-group">
       <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block">SUBMIT</button>

@@ -11,11 +11,18 @@ import { UserService } from 'src/app/services/user.service';
 export class SignUpComponent implements OnInit {
 
   user: User;
+  roles : any[];
 
   constructor(private service: UserService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.service.getAllRoles().subscribe(
+      (data : any)=>{
+        data.forEach(obj => obj.selected = false);
+        this.roles = data;
+      }
+    );
   }
 
   resetForm(form?: NgForm) {
@@ -28,16 +35,24 @@ export class SignUpComponent implements OnInit {
       FirstName: '',
       LastName: ''
     }
+
+    if (this.roles)
+    this.roles.map(x => x.selected = false);
   }
 
   onSubmit(form: NgForm) {
-    //alert("Attempting submit");
-    this.service.registerUser(form.value)
+    var x = this.roles.filter(x => x.selected).map(y => y.Name);
+    this.service.registerUser(form.value,x)
       .subscribe((data: any) => {
         if (data.Succeeded == true) {
-          this.resetForm(form); 
+          this.resetForm(form);
         }
+          
       });
+  }
+
+  updateSelectedRoles(index) {
+    this.roles[index].selected = !this.roles[index].selected;
   }
 
 }
