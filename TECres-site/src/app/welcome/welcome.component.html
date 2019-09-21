@@ -10,7 +10,7 @@
             <li class="active"><a href="#">
               Link <span class="sr-only">(current)</span>
             </a></li>
-            <li><a href="#">Link</a></li>
+            <li><a (click)="Logout()">Logout</a></li>
             <li class="dropdown" dropdown> <!-- {1} -->
                 <a dropdownToggle role="button"> <!-- {2} -->
                   Dropdown <span class="caret"></span></a>
@@ -27,3 +27,13 @@
         </ul>
     </div>
 </nav>
+
+<div *ngIf="userClaims">
+  <span>Username :{{userClaims.UserName}}</span>
+  <br>
+  <span>Email : {{userClaims.Email}}</span>
+  <br>
+  <span>Full Name : {{userClaims.FirstName}} {{userClaims.LastName}}</span>
+  <br>
+  <span>Logged On : {{userClaims.LoggedOn}}</span>
+</div>
