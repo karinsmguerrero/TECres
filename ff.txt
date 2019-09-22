@@ -1,0 +1,25 @@
+client
+
+Id : string;
+    Name : string;
+    LastNames : string;
+    Nationality : string;
+    Email : string;
+    Ocupation : string;
+
+
+customer
+
+Name: string;
+    LastName: string;
+    BirthDate: string;
+    Adress:string;
+    Income:string;
+    Ocupation:string;
+
+sales
+
+   Id : number;
+    Name : string;
+    LastNames : string;
+    EntryDate:string;
