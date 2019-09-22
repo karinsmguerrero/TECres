@@ -1,3 +1,38 @@
+create database TECres
+
+
+create table USUARIO(
+
+	Correo VARCHAR(50) NOT NULL,
+	Nombre VARCHAR(15) NOT NULL,
+	PrimerApellido VARCHAR(15) NOT NULL,
+	SegundoApellido VARCHAR(15) NOT NULL,
+	Contrasena VARCHAR(50) NOT NULL,
+	FechaIngreso DATE,
+	PRIMARY KEY (Correo)
+)
+
+create table OCUPACION(
+	Id INT NOT NULL,
+	Nombre VARCHAR(15) NOT NULL,
+	PRIMARY KEY (Id)
+)
+
+
+create table COMPRADOR(
+
+	Correo VARCHAR(50) NOT NULL,
+	FechaNacimiento DATE NOT NULL,
+	IngresoMensual INT NOT NULL,
+	IdOcupacion INT NOT NULL,
+	Domicilio INT NOT NULL,
+	Sexo VARCHAR(20) NOT NULL,
+	PRIMARY KEY (Correo),
+	FOREIGN KEY(Correo) REFERENCES USUARIO(Correo)
+)
+
+
+
 
 
 create table PERFIL_CLIENTE(
@@ -46,7 +81,7 @@ create table MENSAJE(
 create table ANUNCIO(
 	Id INT NOT NULL,
 	IdPropiedad INT NOT NULL,
-	TipoAnuncio VARCHAR(15) NOT NULL,
+	TipoAnuncio VARCHAR(20) NOT NULL,
 	Tarjeta INT NOT NULL,
 	FechaInicial DATE NOT NULL,
 	FechaFinal DATE NOT NULL,
@@ -72,7 +107,7 @@ create table PROPIEDAD(
 	Id INT NOT NULL,
 	CantidadBanos INT NOT NULL,
 	IdUbicacion INT NOT NULL,
-	TipoPropiedad VARCHAR(15) NOT NULL,
+	TipoPropiedad INT NOT NULL,
 	TamanoLote INT NOT NULL,
 	TamanoPropiedad INT NOT NULL,
 	Piscina BIT NOT NULL,
@@ -89,8 +124,9 @@ create table PROPIEDAD(
 )
 
 create table INMUEBLE(
+	Id INT NOT NULL,
 	Tipo VARCHAR(10) NOT NULL,
-	PRIMARY KEY (Tipo)
+	PRIMARY KEY (Id)
 
 )
 
@@ -105,8 +141,9 @@ create table UBICACION(
 )
 
 create table TIPO_PISO(
+	Id INT NOT NULL,
 	Tipo VARCHAR(10) NOT NULL,
-	PRIMARY KEY (Tipo)
+	PRIMARY KEY (Id)
 
 )
 
@@ -116,3 +153,4 @@ create table NACIONALIDAD(
 	PRIMARY KEY (Id)
 
 )
+
