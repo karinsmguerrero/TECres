@@ -18,14 +18,14 @@
       <div class="form-group">
         <div class="row">
           <label>Cédula</label>
-          <input name="Id" #Id="ngModel" [(ngModel)]="client.Id" class="form-control" required>
+          <input name="Id" #Id="ngModel" [(ngModel)]="registeredClient.Id" class="form-control" required>
           <div class="validation-error" *ngIf="Id.invalid && Id.touched">
             this field is required
           </div>
         </div>
         <div class="row">
             <label>Nacionalidad</label>
-            <input name="Nationality" #Nationality="ngModel" [(ngModel)]="client.Nationality" class="form-control" required>
+            <input name="Nationality" #Nationality="ngModel" [(ngModel)]="registeredClient.Nationality" class="form-control" required>
             <div class="validation-error" *ngIf="Nationality.invalid && Nationality.touched">
               this field is required
             </div>
@@ -33,14 +33,14 @@
         <div class="row">
           <div class="col-md-5">
             <label>Nombre de usuario</label>
-            <input name="UserName" #UserName="ngModel" [(ngModel)]="client.UserName" class="form-control" required>
+            <input name="UserName" #UserName="ngModel" [(ngModel)]="registeredClient.UserName" class="form-control" required>
             <div class="validation-error" *ngIf="UserName.invalid && UserName.touched">
               this field is required
             </div>
           </div>
           <div class="col-md-5">
             <label>Constraseña</label>
-            <input name="Password" type="password" #Password="ngModel" [(ngModel)]="client.Password" class="form-control"
+            <input name="Password" type="password" #Password="ngModel" [(ngModel)]="registeredClient.Password" class="form-control"
               required minlength="6">
             <!-- <label [attr.data-error]="Password.errors!=null?(Password.errors.required?'Required field':'Minimum 6 characters required'):''"></label>  -->
             <div class="validation-error" *ngIf="Password.invalid && Password.touched">
@@ -50,7 +50,7 @@
         </div>
         <div class="row">
           <label>Email</label>
-          <input name="Email" #Email="ngModel" [(ngModel)]="client.Email" class="form-control" required
+          <input name="Email" #Email="ngModel" [(ngModel)]="registeredClient.Email" class="form-control" required
             [pattern]="emailPattern">
           <div class="validation-error" *ngIf="Email.invalid && Email.touched">
             this field is required
@@ -59,14 +59,14 @@
         <div class="row">
           <div class="col-md-5">
             <label>Nombre</label>
-            <input name="FirstName" #FirstName="ngModel" [(ngModel)]="client.FirstName" class="form-control" required>
+            <input name="FirstName" #FirstName="ngModel" [(ngModel)]="registeredClient.FirstName" class="form-control" required>
             <div class="validation-error" *ngIf="FirstName.invalid && FirstName.touched">
               this field is required
             </div>
           </div>
           <div class="col-md-5">
             <label>Apellidos</label>
-            <input name="LastName" #LastName="ngModel" [(ngModel)]="client.LastNames" class="form-control" required>
+            <input name="LastName" #LastName="ngModel" [(ngModel)]="registeredClient.LastNames" class="form-control" required>
             <div class="validation-error" *ngIf="LastName.invalid && LastName.touched">
               this field is required
             </div>
@@ -74,7 +74,7 @@
         </div>
         <div class="row">
             <label>Ocupación</label>
-            <input name="Ocupation" #Ocupation="ngModel" [(ngModel)]="client.Ocupation" class="form-control" required>
+            <input name="Ocupation" #Ocupation="ngModel" [(ngModel)]="registeredClient.Ocupation" class="form-control" required>
             <div class="validation-error" *ngIf="Ocupation.invalid && Ocupation.touched">
               this field is required
             </div>
@@ -82,7 +82,7 @@
       </div>
       <div class="row">
         <div class="form-group">
-          <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block">Registrarse</button>
+          <button type="submit" [disabled]="ClientForm.invalid" class="btn btn-lg btn-block">Registrarse</button>
         </div>
       </div>
     </form>

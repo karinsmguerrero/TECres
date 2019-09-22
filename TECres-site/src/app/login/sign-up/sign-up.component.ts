@@ -3,8 +3,7 @@ import { User } from 'src/app/models/user.model';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { Client } from 'src/app/models/client.model';
-import { Customer } from 'src/app/models/customer.model';
-import { SalesAgent } from 'src/app/models/sales-agent.model';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -13,9 +12,8 @@ import { SalesAgent } from 'src/app/models/sales-agent.model';
 })
 export class SignUpComponent implements OnInit {
 
-  client : Client;
-  customer : Customer;
-  salesAgent : SalesAgent;
+  registeredClient : Client;
+ 
   user: User;
   roles : any[];
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
