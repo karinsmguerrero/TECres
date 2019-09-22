@@ -20,7 +20,7 @@
     </div>
     <div class="row">
       <label>Email</label>
-      <input name="Email" #Email="ngModel" [(ngModel)]="user.Email" class="form-control" required>
+      <input name="Email" #Email="ngModel" [(ngModel)]="user.Email" class="form-control" required [pattern]="emailPattern">
       <div class="validation-error" *ngIf="Email.invalid && Email.touched">
         this field is required
       </div>
