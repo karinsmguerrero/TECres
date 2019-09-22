@@ -3,7 +3,6 @@
     <div class="row">
       <div class="col-md-5">
         <label>User name</label>
-        <i class="material-icons prefix">account_circle</i>
         <input name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" class="form-control" required>
         <div class="validation-error" *ngIf="UserName.invalid && UserName.touched">
           this field is required
@@ -53,7 +52,7 @@
   </div>
   <div class="row">
     <div class="form-group">
-      <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block">SUBMIT</button>
+      <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block">Registrarse</button>
     </div>
   </div>
 </form>
