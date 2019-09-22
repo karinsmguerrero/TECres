@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { Client } from 'src/app/models/client.model';
+import { Customer } from 'src/app/models/customer.model';
+import { SalesAgent } from 'src/app/models/sales-agent.model';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,9 +13,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignUpComponent implements OnInit {
 
+  client : Client;
+  customer : Customer;
+  salesAgent : SalesAgent;
   user: User;
   roles : any[];
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+
+  showSeller : Boolean = false;
+  showSalesAgent : Boolean = false;
+  showCustomer : Boolean = false;
 
   constructor(private service: UserService) { }
 
@@ -54,6 +64,24 @@ export class SignUpComponent implements OnInit {
 
   updateSelectedRoles(index) {
     this.roles[index].selected = !this.roles[index].selected;
+  }
+
+  showSellerForm(){
+    this.showSeller = true;
+    this.showSalesAgent = false;
+    this.showCustomer = false;
+  }
+
+  showSalesAgentForm(){
+    this.showSeller = false;
+    this.showSalesAgent = true;
+    this.showCustomer = false;
+  }
+
+  showCustomerForm(){
+    this.showSeller = false;
+    this.showSalesAgent = false;
+    this.showCustomer = true;
   }
 
 }
