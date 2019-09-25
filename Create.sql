@@ -13,7 +13,7 @@ create table USUARIO(
 )
 
 create table OCUPACION(
-	Id INT NOT NULL,
+	Id INT NOT NULL IDENTITY(1,1),
 	Nombre VARCHAR(15) NOT NULL,
 	PRIMARY KEY (Id)
 )
@@ -68,7 +68,7 @@ create table VENDEDOR(
 
 
 create table MENSAJE(
-	Id INT NOT NULL,
+	Id INT NOT NULL IDENTITY(1,1),
 	IdAnuncio INT NOT NULL,
 	Fecha DATE NOT NULL,
 	Hora TIME NOT NULL,
@@ -79,7 +79,7 @@ create table MENSAJE(
 )
 
 create table ANUNCIO(
-	Id INT NOT NULL,
+	Id INT NOT NULL IDENTITY(1,1),
 	IdPropiedad INT NOT NULL,
 	TipoAnuncio VARCHAR(20) NOT NULL,
 	Tarjeta INT NOT NULL,
@@ -104,7 +104,7 @@ create table TIPO_ANUNCIO(
 )
 
 create table PROPIEDAD(
-	Id INT NOT NULL,
+	Id INT NOT NULL IDENTITY(1,1),
 	CantidadBanos INT NOT NULL,
 	IdUbicacion INT NOT NULL,
 	TipoPropiedad INT NOT NULL,
@@ -124,7 +124,7 @@ create table PROPIEDAD(
 )
 
 create table INMUEBLE(
-	Id INT NOT NULL,
+	Id INT NOT NULL IDENTITY(1,1),
 	Tipo VARCHAR(10) NOT NULL,
 	PRIMARY KEY (Id)
 
@@ -132,7 +132,7 @@ create table INMUEBLE(
 
 
 create table UBICACION(
-	Id INT NOT NULL,
+	Id INT NOT NULL IDENTITY(1,1),
 	Provincia VARCHAR(15) NOT NULL,
 	Canton VARCHAR(15) NOT NULL,
 	Distrito VARCHAR(15) NOT NULL,
@@ -141,14 +141,14 @@ create table UBICACION(
 )
 
 create table TIPO_PISO(
-	Id INT NOT NULL,
+	Id INT NOT NULL IDENTITY(1,1),
 	Tipo VARCHAR(10) NOT NULL,
 	PRIMARY KEY (Id)
 
 )
 
 create table NACIONALIDAD(
-	Id INT NOT NULL,
+	Id INT NOT NULL IDENTITY(1,1),
 	Nacionalidad VARCHAR(10) NOT NULL,
 	PRIMARY KEY (Id)
 
