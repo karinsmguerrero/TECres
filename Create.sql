@@ -117,7 +117,6 @@ create table PROPIEDAD(
 	CantidadNiveles INT DEFAULT (1),
 	CantidadHabitaciones INT NOT NULL,
 	Precio INT NOT NULL,
-	Fotos VARCHAR (200),
 	Propietario VARCHAR(50) NOT NULL,
 	Gimnasio BIT NOT NULL DEFAULT(0),
 	PRIMARY KEY (Id)
@@ -152,5 +151,13 @@ create table NACIONALIDAD(
 	Nacionalidad VARCHAR(10) NOT NULL,
 	PRIMARY KEY (Id)
 
+)
+
+
+CREATE TABLE FOTOS(
+	Id INT NOT NULL IDENTITY(1,1),
+	Ruta VARCHAR(200),
+	IdPropiedad INT NOT NULL,
+	PRIMARY KEY (Id)
 )
 
