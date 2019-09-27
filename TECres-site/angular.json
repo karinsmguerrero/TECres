@@ -27,10 +27,31 @@
               "src/styles.css",
               "src/css/style.css",
               "src/lib/animate/animate.css",
-              "src/lib/animate/animate.min.css"
+              "src/lib/animate/animate.min.css",
+              "src/lib/bootstrap/css/bootstrap.css",
+              "src/lib/bootstrap/css/bootstrap.min.css",
+              "src/lib/ionicons/css/ionicons.css",
+              "src/lib/ionicons/css/ionicons.min.css",
+              "src/lib/owlcarousel/assets/owl.carousel.css",
+              "src/lib/owlcarousel/assets/owl.carousel.min.css",
+              "src/lib/owlcarousel/assets/owl.theme.default.css",
+              "src/lib/owlcarousel/assets/owl.theme.default.min.css",
+              "src/lib/owlcarousel/assets/owl.theme.green.css",
+              "src/lib/owlcarousel/assets/owl.theme.green.min.css"
             ],
             "scripts": [
-              
+              "src/lib/bootstrap/js/bootstrap.js",
+              "src/lib/bootstrap/js/bootstrap.min.js",
+              "src/lib/easing/easing.js",
+              "src/lib/easing/easing.min.js",
+              "src/lib/jquery/jquery-migrate.min.js",
+              "src/lib/jquery/jquery.min.js",
+              "src/lib/owlcarousel/owl.carousel.js",
+              "src/lib/owlcarousel/owl.carousel.min.js",
+              "src/lib/popper/popper.min.js",
+              "src/lib/scrollreveal/scrollreveal.js",
+              "src/lib/scrollreveal/scrollreveal.min.js",
+              "src/js/main.js"
             ]
           },
           "configurations": {
