@@ -41,7 +41,7 @@ create table PERFIL_CLIENTE(
 	PRIMARY KEY (Nombre)
 )
 
-create table AGENTE_VENTAS(
+create table CLIENTE(
 	Correo VARCHAR(50) NOT NULL,
 	IdNacionalidad INT NOT NULL,
 	Cedula INT NOT NULL,
@@ -54,14 +54,6 @@ create table AGENTE_VENTAS(
 create table ADMINISTRADOR(
 	Correo VARCHAR(50) NOT NULL,
 	Cedula INT NOT NULL,
-	PRIMARY KEY (Correo),
-	UNIQUE (Cedula)
-)
-
-create table VENDEDOR(
-	Correo VARCHAR(50) NOT NULL,
-	Cedula INT NOT NULL,
-	IdNacionalidad INT NOT NULL,
 	PRIMARY KEY (Correo),
 	UNIQUE (Cedula)
 )
