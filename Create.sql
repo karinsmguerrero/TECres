@@ -26,7 +26,7 @@ create table COMPRADOR(
 	IngresoMensual INT NOT NULL,
 	IdOcupacion INT NOT NULL,
 	Domicilio INT NOT NULL,
-	Sexo VARCHAR(20) NOT NULL,
+	Sexo VARCHAR(5) NOT NULL,
 	PRIMARY KEY (Correo),
 	FOREIGN KEY(Correo) REFERENCES USUARIO(Correo)
 )
@@ -38,6 +38,7 @@ create table COMPRADOR(
 create table PERFIL_CLIENTE(
 	Nombre VARCHAR(15) NOT NULL,
 	Descripcion VARCHAR(50) NOT NULL,
+	Predeterminado BIT DEFAULT (0),
 	PRIMARY KEY (Nombre)
 )
 
@@ -75,22 +76,17 @@ create table ANUNCIO(
 	IdPropiedad INT NOT NULL,
 	TipoAnuncio VARCHAR(20) NOT NULL,
 	Tarjeta INT NOT NULL,
-	FechaInicial DATE NOT NULL,
-	FechaFinal DATE NOT NULL,
-	CantidadMensajes INT NOT NULL,
-	IngresoInicial INT NOT NULL,
-	IngresoFinal INT NOT NULL,
-	Sexo VARCHAR(20) NOT NULL,
-	EdadInicial INT NOT NULL,
-	EdadFinal INT NOT NULL,
 	IdAgente VARCHAR(50) NOT NULL,
-	Estado BIT NOT NULL DEFAULT(0),
+	Estado BIT DEFAULT(0),
+	Venta BIT DEFAULT (1),
+	IdPublico INT,
 	PRIMARY KEY (Id)
 )
 
 create table TIPO_ANUNCIO(
-	Nombre VARCHAR(20) NOT NULL,
+	Nombre VARCHAR(30) NOT NULL,
 	Precio INT NOT NULL,
+	Predeterminado BIT DEFAULT (0),
 	PRIMARY KEY (Nombre)
 
 )
@@ -110,14 +106,14 @@ create table PROPIEDAD(
 	CantidadHabitaciones INT NOT NULL,
 	Precio INT NOT NULL,
 	Propietario VARCHAR(50) NOT NULL,
-	Gimnasio BIT NOT NULL DEFAULT(0),
-	Venta BIT NOT NULL,
+	Gimnasio BIT DEFAULT(0),
 	PRIMARY KEY (Id)
 )
 
 create table INMUEBLE(
 	Id INT NOT NULL IDENTITY(1,1),
 	Tipo VARCHAR(10) NOT NULL,
+	Predeterminado BIT DEFAULT (0),
 	PRIMARY KEY (Id)
 
 )
@@ -134,7 +130,8 @@ create table UBICACION(
 
 create table TIPO_PISO(
 	Id INT NOT NULL IDENTITY(1,1),
-	Tipo VARCHAR(10) NOT NULL,
+	Tipo VARCHAR(30) NOT NULL,
+	Predeterminado BIT DEFAULT (0),
 	PRIMARY KEY (Id)
 
 )
@@ -154,3 +151,14 @@ CREATE TABLE FOTOS(
 	PRIMARY KEY (Id)
 )
 
+
+CREATE TABLE PUBLICO(
+	FechaInicial DATE NOT NULL,
+	FechaFinal DATE NOT NULL,
+	CantidadMensajes INT NOT NULL,
+	IngresoInicial INT NOT NULL,
+	IngresoFinal INT NOT NULL,
+	Sexo VARCHAR(5) NOT NULL,
+	EdadInicial INT NOT NULL,
+	EdadFinal INT NOT NULL,
+)
