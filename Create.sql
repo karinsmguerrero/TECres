@@ -36,7 +36,7 @@ create table COMPRADOR(
 
 
 create table PERFIL_CLIENTE(
-	Nombre VARCHAR(15) NOT NULL,
+	Nombre VARCHAR(20) NOT NULL,
 	Descripcion VARCHAR(50) NOT NULL,
 	Predeterminado BIT DEFAULT (0),
 	PRIMARY KEY (Nombre)
@@ -46,7 +46,7 @@ create table CLIENTE(
 	Correo VARCHAR(50) NOT NULL,
 	IdNacionalidad INT NOT NULL,
 	Cedula INT NOT NULL,
-	PerfilCliente VARCHAR(15) NOT NULL,
+	PerfilCliente VARCHAR(20) NOT NULL,
 	PRIMARY KEY (Correo),
 	UNIQUE (Cedula)
 )
@@ -74,7 +74,7 @@ create table MENSAJE(
 create table ANUNCIO(
 	Id INT NOT NULL IDENTITY(1,1),
 	IdPropiedad INT NOT NULL,
-	TipoAnuncio VARCHAR(20) NOT NULL,
+	TipoAnuncio VARCHAR(30) NOT NULL,
 	Tarjeta INT NOT NULL,
 	IdAgente VARCHAR(50) NOT NULL,
 	Estado BIT DEFAULT(0),
@@ -138,7 +138,7 @@ create table TIPO_PISO(
 
 create table NACIONALIDAD(
 	Id INT NOT NULL IDENTITY(1,1),
-	Nacionalidad VARCHAR(10) NOT NULL,
+	Nacionalidad VARCHAR(20) NOT NULL,
 	PRIMARY KEY (Id)
 
 )
@@ -146,13 +146,14 @@ create table NACIONALIDAD(
 
 CREATE TABLE FOTOS(
 	Id INT NOT NULL IDENTITY(1,1),
-	Ruta VARCHAR(200),
+	Ruta VARCHAR(300),
 	IdPropiedad INT NOT NULL,
 	PRIMARY KEY (Id)
 )
 
 
 CREATE TABLE PUBLICO(
+	Id INT NOT NULL IDENTITY(1,1),
 	FechaInicial DATE NOT NULL,
 	FechaFinal DATE NOT NULL,
 	CantidadMensajes INT NOT NULL,
@@ -161,4 +162,5 @@ CREATE TABLE PUBLICO(
 	Sexo VARCHAR(5) NOT NULL,
 	EdadInicial INT NOT NULL,
 	EdadFinal INT NOT NULL,
+	PRIMARY KEY (Id)
 )
