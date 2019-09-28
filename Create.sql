@@ -111,6 +111,7 @@ create table PROPIEDAD(
 	Precio INT NOT NULL,
 	Propietario VARCHAR(50) NOT NULL,
 	Gimnasio BIT NOT NULL DEFAULT(0),
+	Venta BIT NOT NULL,
 	PRIMARY KEY (Id)
 )
 
