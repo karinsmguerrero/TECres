@@ -1,3 +1,4 @@
+<!--
 <nav class="navbar navbar-default" *ngIf="loggedIn()">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -30,3 +31,53 @@
     </ul>
   </div>
 </nav>
+-->
+<!--/ Nav Star /-->
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg ">
+  <div class="container">
+    <!--<img src="./assets/img/logo.png">-->
+    <a class="navbar-brand text-brand" routerLink="/home">TEC<span class="color-b">res</span></a>
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+      <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/careers">Gestión de carreras</a>
+            </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Gestion de usuarios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/users/agents">Agentes inmobiliarios</a>
+            <a class="dropdown-item" routerLink="/users/admins">Administradores</a>
+            <a class="dropdown-item" routerLink="/users/clients">Propietarios</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Gestion de características
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/location">Ubicaciones</a>
+            <a class="dropdown-item" routerLink="/propertytype">Tipo de inmueble</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Gestion de anuncios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/advertising/approval">Aprobación de anuncios</a>
+            <a class="dropdown-item" routerLink="/advertising/assignement">Asignación de agentes</a>
+            <a class="dropdown-item" routerLink="/advertising/type">Tipo de anuncio</a>
+            <a class="dropdown-item" routerLink="/advertising/statistics">Estadísticas</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" >Cerrar sesión</button>
+  </div>
+</nav>
+<!--/ Nav End /-->

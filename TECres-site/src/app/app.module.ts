@@ -17,7 +17,7 @@ import { CarrersComponent } from './Administration/carrers/carrers.component';
 import { SiteAdminsComponent } from './Administration/site-admins/site-admins.component';
 import { ApprovalComponent } from './Administration/Advertisement/approval/approval.component';
 import { TypeComponent } from './Administration/Advertisement/type/type.component';
-import { StatisticsComponent } from './Administration/statistics/statistics.component';
+import { StatisticsComponent } from './Administration/Advertisement/statistics/statistics.component';
 import { AssignmentComponent } from './Administration/Advertisement/assignment/assignment.component';
 import { BillingComponent } from './Administration/billing/billing.component';
 import { RealStateManagementComponent } from './Clients/real-state-management/real-state-management.component';
@@ -81,13 +81,14 @@ import { HomeComponent } from './home/home.component';
     TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
-  providers: [UserService,AuthGuard,
+  /*providers: [UserService,AuthGuard,
     ,
     {
       provide : HTTP_INTERCEPTORS,
       useClass : AuthInterceptor,
       multi : true
-    }],
+    }],*/
+    providers:[UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,4 +3,6 @@ export class SalesAgent {
     Name : string;
     LastNames : string;
     EntryDate:string;
+    UserName : string;
+    Password : string;
 }

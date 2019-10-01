@@ -5,4 +5,6 @@ export class Customer {
     Adress:string;
     Income:string;
     Ocupation:string;
+    UserName : string;
+    Password : string;
 }

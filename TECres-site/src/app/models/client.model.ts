@@ -5,4 +5,6 @@ export class Client {
     Nationality : string;
     Email : string;
     Ocupation : string;
+    UserName : string;
+    Password : string;
 }

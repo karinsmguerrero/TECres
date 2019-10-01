@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from '../models/user.model';
+import { Client } from '../models/client.model';
+import { Customer } from '../models/customer.model';
+import { SalesAgent } from '../models/sales-agent.model';
+import { Admin } from '../models/admin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +18,70 @@ export class UserService {
   Objetivo: registrar usuarios nuevos
   Parámetros: user : User => objeto de tipo User que contiene los datos del usuario
   */
-  registerUser(user: User, roles : string[]) {
+  registerUser(user: User, roles: number) {
     const body = {
       UserName: user.UserName,
       Password: user.Password,
       Email: user.Email,
       FirstName: user.FirstName,
       LastName: user.LastName,
-      Roles : roles
+      Roles: roles
     }
-    var reqHeader = new HttpHeaders({'No-Auth':'True'});
-    return this.http.post(this.rootURL + '/api/User/Register', body, {headers : reqHeader});
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.post(this.rootURL + '/api/User/Register', body, { headers: reqHeader });
+  }
+
+  registerAdmin(user: Admin, roles: number) {
+    const body = {
+      Name: user.Name,
+      LastNames: user.LastNames,
+      Id: user.Id,
+      EntryDate: user.EntryDate,
+      BirthDate: user.BirthDate,
+      Roles: roles
+    }
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.post(this.rootURL + '/api/User/Register', body, { headers: reqHeader });
+  }
+
+  registerClient(user: Client, roles: number) {
+    const body = {
+      Id: user.Id,
+      Name: user.Name,
+      LastNames: user.LastNames,
+      Nationality: user.Nationality,
+      Email: user.Email,
+      Ocupation: user.Ocupation,
+      Roles: roles
+    }
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.post(this.rootURL + '/api/User/Register', body, { headers: reqHeader });
+  }
+
+  registerCustomer(user: Customer, roles: number) {
+    const body = {
+      Name: user.Name,
+      LastName: user.LastName,
+      BirthDate: user.BirthDate,
+      Adress: user.Adress,
+      Income: user.Income,
+      Ocupation: user.Ocupation,
+      Roles: roles
+    }
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.post(this.rootURL + '/api/User/Register', body, { headers: reqHeader });
+  }
+
+  registerAgent(user: SalesAgent, roles: number) {
+    const body = {
+      Id: user.Id,
+      Name: user.Name,
+      LastNames: user.LastNames,
+      EntryDate: user.EntryDate,
+      Roles: roles
+    }
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.post(this.rootURL + '/api/User/Register', body, { headers: reqHeader });
   }
 
   /*
@@ -33,10 +90,10 @@ export class UserService {
   Parámetros: username => objeto de tipo string que contiene el nombre de usuario
               Password => objeto de tipo string que contiene la contraseña
   */
-  userAuthentication(username, password){
+  userAuthentication(username, password) {
     var data = "username=" + username + "&password=" + password +
-    "&grant_type=password";
-    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
+      "&grant_type=password";
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded', 'No-Auth': 'True' });
     return this.http.post(this.rootURL + '/token', data, { headers: reqHeader });
   }
 
@@ -45,8 +102,8 @@ export class UserService {
   Objetivo: obtener los datos del usuario logeado desde el API
   Parámetros: ninguno
   */
-  getUserClaims(){
-    return this.http.get(this.rootURL+ '/api/GetUserClaims');
+  getUserClaims() {
+    return this.http.get(this.rootURL + '/api/GetUserClaims');
   }
 
   /*
