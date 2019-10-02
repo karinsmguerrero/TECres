@@ -19,8 +19,9 @@ VALUES
  ('Cartago','Turrialba','Tayutic'),
  ('Cartago','Turrialba','Pavones');
 
- INSERT INTO TIPO_PISO (Tipo)
-VALUES ('Concreto Lujado'),('Porcelanata'),('Ceramica');
+
+INSERT INTO TIPO_PISO (Tipo,Predeterminado)
+VALUES ('Concreto Lujado',1),('Porcelanato',1),('Ceramica',1);
 
 INSERT INTO NACIONALIDAD(Nacionalidad)
 VALUES ('Costarricense'),

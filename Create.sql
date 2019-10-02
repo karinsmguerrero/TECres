@@ -1,66 +1,65 @@
-create database TECres
+CREATE database TECres
 
 
-create table USUARIO(
+CREATE TABLE USUARIO(
 
-	Correo VARCHAR(50) NOT NULL,
+	Username VARCHAR(50) NOT NULL,
 	Nombre VARCHAR(15) NOT NULL,
 	PrimerApellido VARCHAR(15) NOT NULL,
 	SegundoApellido VARCHAR(15) NOT NULL,
-	Contrasena VARCHAR(50) NOT NULL,
 	FechaIngreso DATE,
-	PRIMARY KEY (Correo)
+	PRIMARY KEY (Username)
 )
 
-create table OCUPACION(
+CREATE TABLE OCUPACION(
 	Id INT NOT NULL IDENTITY(1,1),
 	Nombre VARCHAR(15) NOT NULL,
 	PRIMARY KEY (Id)
 )
 
 
-create table COMPRADOR(
+CREATE TABLE COMPRADOR(
 
-	Correo VARCHAR(50) NOT NULL,
+	Username VARCHAR(50) NOT NULL,
 	FechaNacimiento DATE NOT NULL,
 	IngresoMensual INT NOT NULL,
 	IdOcupacion INT NOT NULL,
 	Domicilio INT NOT NULL,
 	Sexo VARCHAR(5) NOT NULL,
-	PRIMARY KEY (Correo),
-	FOREIGN KEY(Correo) REFERENCES USUARIO(Correo)
+	PRIMARY KEY (Username),
+	FOREIGN KEY(Username) REFERENCES USUARIO(Username)
 )
 
 
 
 
 
-create table PERFIL_CLIENTE(
+CREATE TABLE PERFIL_CLIENTE(
 	Nombre VARCHAR(20) NOT NULL,
 	Descripcion VARCHAR(50) NOT NULL,
 	Predeterminado BIT DEFAULT (0),
 	PRIMARY KEY (Nombre)
 )
 
-create table CLIENTE(
-	Correo VARCHAR(50) NOT NULL,
+CREATE TABLE CLIENTE(
+	Username VARCHAR(50) NOT NULL,
 	IdNacionalidad INT NOT NULL,
 	Cedula INT NOT NULL,
 	PerfilCliente VARCHAR(20) NOT NULL,
-	PRIMARY KEY (Correo),
+	PRIMARY KEY (Username),
 	UNIQUE (Cedula)
 )
 
 
-create table ADMINISTRADOR(
-	Correo VARCHAR(50) NOT NULL,
+CREATE TABLE ADMINISTRADOR(
+	Username VARCHAR(50) NOT NULL,
 	Cedula INT NOT NULL,
-	PRIMARY KEY (Correo),
+	PRIMARY KEY (Username),
 	UNIQUE (Cedula)
 )
 
 
-create table MENSAJE(
+CREATE TABLE MENSAJE(
 	Id INT NOT NULL IDENTITY(1,1),
 	IdAnuncio INT NOT NULL,
 	Fecha DATE NOT NULL,
@@ -71,7 +70,7 @@ create table MENSAJE(
 	PRIMARY KEY (Id)
 )
 
-create table ANUNCIO(
+CREATE TABLE ANUNCIO(
 	Id INT NOT NULL IDENTITY(1,1),
 	IdPropiedad INT NOT NULL,
 	TipoAnuncio VARCHAR(30) NOT NULL,
@@ -83,7 +82,7 @@ create table ANUNCIO(
 	PRIMARY KEY (Id)
 )
 
-create table TIPO_ANUNCIO(
+CREATE TABLE TIPO_ANUNCIO(
 	Nombre VARCHAR(30) NOT NULL,
 	Precio INT NOT NULL,
 	Predeterminado BIT DEFAULT (0),
@@ -91,7 +90,7 @@ create table TIPO_ANUNCIO(
 
 )
 
-create table PROPIEDAD(
+CREATE TABLE PROPIEDAD(
 	Id INT NOT NULL IDENTITY(1,1),
 	CantidadBanos INT NOT NULL,
 	IdUbicacion INT NOT NULL,
@@ -110,16 +109,16 @@ create table PROPIEDAD(
 	PRIMARY KEY (Id)
 )
 
-create table INMUEBLE(
+CREATE TABLE INMUEBLE(
 	Id INT NOT NULL IDENTITY(1,1),
-	Tipo VARCHAR(10) NOT NULL,
+	TipoPropiedad VARCHAR(30) NOT NULL, --Cambio
 	Predeterminado BIT DEFAULT (0),
 	PRIMARY KEY (Id)
 
 )
 
 
-create table UBICACION(
+CREATE TABLE UBICACION(
 	Id INT NOT NULL IDENTITY(1,1),
 	Provincia VARCHAR(15) NOT NULL,
 	Canton VARCHAR(15) NOT NULL,
@@ -128,19 +127,18 @@ create table UBICACION(
 
 )
 
-create table TIPO_PISO(
+CREATE TABLE TIPO_PISO(
 	Id INT NOT NULL IDENTITY(1,1),
-	Tipo VARCHAR(30) NOT NULL,
+	Piso VARCHAR(30) NOT NULL,
 	Predeterminado BIT DEFAULT (0),
 	PRIMARY KEY (Id)
 
 )
 
-create table NACIONALIDAD(
+CREATE TABLE NACIONALIDAD(
 	Id INT NOT NULL IDENTITY(1,1),
-	Nacionalidad VARCHAR(20) NOT NULL,
+	Nacionalidad VARCHAR(30) NOT NULL,
 	PRIMARY KEY (Id)
-
 )
 
 
