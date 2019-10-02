@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteAdminsComponent implements OnInit {
 
-  constructor() { }
+  agents: string[] = ["a", "b", "c", "d", "e", "f", "g", "h"];
+  user = {
+    name: 'awesome user'
+  };  
 
   ngOnInit() {
   }
-
+  
 }

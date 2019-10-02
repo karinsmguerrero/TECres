@@ -39,18 +39,14 @@ namespace TECres_api.Controllers
             var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
             var manager = new UserManager<ApplicationUser>(userStore);
             var user = new ApplicationUser() { 
-                UserName = model.UserName,
-                Email = model.LastNames,
-                Id = model.Id,
-
+                UserName = model.UserName
             };
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6
             };
             IdentityResult result = manager.Create(user, model.Password);
-            manager.AddToRoles(user.Id, model.Roles);
-
+            manager.AddToRoles(user.Id, "Admin");
             return result;
         }
 
