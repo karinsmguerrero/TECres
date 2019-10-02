@@ -51,7 +51,8 @@
               "src/lib/popper/popper.min.js",
               "src/lib/scrollreveal/scrollreveal.js",
               "src/lib/scrollreveal/scrollreveal.min.js",
-              "src/js/main.js"
+              "src/lib copy/angular-animate.min.js",
+              "src/lib copy/angular-route.js"
             ]
           },
           "configurations": {

@@ -29,8 +29,6 @@ namespace TECres_api
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
                 identity.AddClaim(new Claim("Username", user.UserName));
                 identity.AddClaim(new Claim("Email", user.Email));
-                identity.AddClaim(new Claim("FirstName", user.FirstName));
-                identity.AddClaim(new Claim("LastName", user.LastName));
                 identity.AddClaim(new Claim("LoggedOn", DateTime.Now.ToString()));
                 var userRoles = manager.GetRoles(user.Id);
                 foreach (string roleName in userRoles)
