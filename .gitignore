@@ -23,7 +23,6 @@ TECres-api/.vs
 *.pch
 
 # Libraries
-*.lib
 *.a
 *.la
 *.lo

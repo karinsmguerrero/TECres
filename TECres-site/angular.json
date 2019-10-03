@@ -52,7 +52,7 @@
               "src/lib/scrollreveal/scrollreveal.js",
               "src/lib/scrollreveal/scrollreveal.min.js",
               "src/lib copy/angular-animate.min.js",
-              "src/lib copy/angular-route.js"
+              "src/lib copy/angular-route.min.js"
             ]
           },
           "configurations": {
