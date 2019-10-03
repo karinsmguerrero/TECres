@@ -1,0 +1,22 @@
+
+CREATE PROCEDURE GetIdNac AS
+@nacionalidad
+	
+	SELECT Id WHERE Nacionalidad=@nacionalidad
+
+
+CREATE FUNCTION addCliente@username VARCHAR(50),
+@nombre VARCHAR(15),
+@pApellido VARCHAR(15),
+@sApellido VARCHAR(15),
+@fecha DATE,
+@nacionalidad VARCHAR(30),
+@cedula INT,
+@perfil VARCHAR(20)
+AS
+BEGIN
+DECLARE @idNac
+SET @idNac = SELECT Id WHERE Nacionalidad=@nacionalidad
+EXEC RegistrarCliente @addCliente,@nombre,@pApellido,@sApellido,@fecha,@idNac,@cedula,@perfil
+END
+
