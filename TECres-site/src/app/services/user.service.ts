@@ -129,4 +129,8 @@ export class UserService {
 
   }
 
+  getAgents() {
+    return this.http.get(this.rootURL + '/api/Agents/GetAllAgents');
+  }
+
 }
