@@ -19,6 +19,7 @@ import { SalesAgentManagementComponent } from './Administration/sales-agent-mana
 import { StatisticsComponent } from './Administration/Advertisement/statistics/statistics.component';
 import { ClientProfileComponent } from './Administration/client-profile/client-profile.component';
 import { HomeComponent } from './home/home.component';
+import { SalesComponent } from './Reports/sales/sales.component';
 
 
 
@@ -36,7 +37,7 @@ const routes: Routes = [
   { path: 'users/admins', component: SiteAdminsComponent},
   { path: 'advertising/statistics', component: StatisticsComponent},
   { path: 'users/clients', component: ClientProfileComponent},
-  
+  { path: 'report', component: SalesComponent},
   {
     path: 'signup', component: LoginComponent,
     children: [{ path: '', component: SignUpComponent }]

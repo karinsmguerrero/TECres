@@ -38,6 +38,8 @@ export class UserService {
       Id: user.Id,
       EntryDate: user.EntryDate,
       BirthDate: user.BirthDate,
+      UserName : user.UserName,
+      Password : user.Password,
       Roles: roles
     }
     var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
@@ -52,6 +54,8 @@ export class UserService {
       Nationality: user.Nationality,
       Email: user.Email,
       Ocupation: user.Ocupation,
+      UserName : user.UserName,
+      Password : user.Password,
       Roles: roles
     }
     var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
@@ -66,6 +70,8 @@ export class UserService {
       Adress: user.Adress,
       Income: user.Income,
       Ocupation: user.Ocupation,
+      UserName : user.UserName,
+      Password : user.Password,
       Roles: roles
     }
     var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
@@ -75,10 +81,11 @@ export class UserService {
   registerAgent(user: SalesAgent, roles: number) {
     const body = {
       Id: user.Id,
-      Name: user.Name,
+      Name: user.Name,                                                                                        
       LastNames: user.LastNames,
       EntryDate: user.EntryDate,
-      Roles: roles
+      UserName : user.UserName,
+      Password : user.Password
     }
     var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
     return this.http.post(this.rootURL + '/api/User/Register', body, { headers: reqHeader });
@@ -131,6 +138,18 @@ export class UserService {
 
   getAgents() {
     return this.http.get(this.rootURL + '/api/Agents/GetAllAgents');
+  }
+
+  updateAgent(agent : SalesAgent){
+    const body = {
+      Id: agent.Id,
+      Name: agent.Name,
+      LastNames: agent.LastNames,
+      EntryDate: agent.EntryDate,
+      UserName : agent.UserName
+    }
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.put(this.rootURL + '/api/Agents/Update', body, { headers: reqHeader });
   }
 
 }

@@ -35,18 +35,28 @@ export class SalesAgentManagementComponent implements OnInit {
   editRowId : any = '';
 
   ngOnInit() {
+    
     this.agentList = [this.amy, this.blessy];
+    
   }
 
   edit(val){
     this.editRowId = val;
   }
 
-  update(data : SalesAgent){
-    this.toastr.success('Hello world!', 'Toastr fun!');
+  update(agent : SalesAgent){
+    this.userservice.updateAgent(agent)
+    .subscribe((data: any) => {
+      if (data.Succeeded == true) {
+        this.toastr.success('Éxito!', 'Actualización exitosa');
+      }
+    });
+   
   }
 
   delete(data : SalesAgent){
     this.toastr.success('Hello world!', 'Toastr fun!');
   }
+
+  
 }
