@@ -2,7 +2,9 @@
 using CrystalDecisions.Shared;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -46,8 +48,45 @@ namespace TECres_api.Controllers
 
             //ReportDocument rd = new ReportDocument();
             //rd.Load(Server.MapPath("CrystalReport.rpt"));
+            string strgCn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            SqlConnection cn = new SqlConnection(strgCn);
+            SqlCommand cmd = new SqlCommand("SELECT Id,Nacionalidad FROM NACIONALIDAD", cn);
+            cn.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet dset = new DataSet();
+            adapter.Fill(dset);
+            cn.Close();
+
             ReportDocument rd = new ReportDocument();
+            rd.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/Reports/CrystalReports/CrystalReport1.rpt"));
+            
+            ConnectionInfo connectInfo = new ConnectionInfo()
+            {
+                ServerName = "LAPTOP-J3QU9F5B/SQLEXPRESS",
+                DatabaseName = "TECres",
+                UserID = "Admin",
+                Password = "Karina"
+            };
+            rd.SetDatabaseLogon("Admin", "karina");
+            foreach (Table tbl in rd.Database.Tables)
+            {
+                tbl.LogOnInfo.ConnectionInfo = connectInfo;
+                tbl.ApplyLogOnInfo(tbl.LogOnInfo);
+            }
+            rd.Database.Tables["NACIONALIDAD"].SetDataSource(dset);
+
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            Stream strm = rd.ExportToStream(ExportFormatType.PortableDocFormat);
+            response.Content = new StreamContent(strm);
+            response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment");
+            response.Content.Headers.ContentDisposition.FileName = "report.pdf";
+
+            return response;
+
+
+            /*
             rd.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/Reports/CrystalReports/crpNacionalidad.rpt"));
+            rd.SetDatabaseLogon("Admin", "karina", @"LAPTOP-J3QU9F5B\SQLEXPRESS", "TECres");
             try
             {
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
@@ -62,7 +101,7 @@ namespace TECres_api.Controllers
             {
                 //return string.Empty;
                 throw;
-            }
+            }*/
 
         }
 
