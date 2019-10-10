@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TecModelStoreContainer" CdmEntityContainer="TecEntities">
+    <EntitySetMapping Name="ADMINISTRADOR">
+      <EntityTypeMapping TypeName="TecModel.ADMINISTRADOR">
+        <MappingFragment StoreEntitySet="ADMINISTRADOR">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ANUNCIO">
+      <EntityTypeMapping TypeName="TecModel.ANUNCIO">
+        <MappingFragment StoreEntitySet="ANUNCIO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPropiedad" ColumnName="IdPropiedad" />
+          <ScalarProperty Name="TipoAnuncio" ColumnName="TipoAnuncio" />
+          <ScalarProperty Name="Tarjeta" ColumnName="Tarjeta" />
+          <ScalarProperty Name="IdAgente" ColumnName="IdAgente" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Venta" ColumnName="Venta" />
+          <ScalarProperty Name="IdPublico" ColumnName="IdPublico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="TecModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="IdNacionalidad" ColumnName="IdNacionalidad" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="PerfilCliente" ColumnName="PerfilCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPRADOR">
+      <EntityTypeMapping TypeName="TecModel.COMPRADOR">
+        <MappingFragment StoreEntitySet="COMPRADOR">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="IngresoMensual" ColumnName="IngresoMensual" />
+          <ScalarProperty Name="IdOcupacion" ColumnName="IdOcupacion" />
+          <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FOTOS">
+      <EntityTypeMapping TypeName="TecModel.FOTOS">
+        <MappingFragment StoreEntitySet="FOTOS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="IdPropiedad" ColumnName="IdPropiedad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INMUEBLE">
+      <EntityTypeMapping TypeName="TecModel.INMUEBLE">
+        <MappingFragment StoreEntitySet="INMUEBLE">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TipoPropiedad" ColumnName="TipoPropiedad" />
+          <ScalarProperty Name="Predeterminado" ColumnName="Predeterminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENSAJE">
+      <EntityTypeMapping TypeName="TecModel.MENSAJE">
+        <MappingFragment StoreEntitySet="MENSAJE">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdAnuncio" ColumnName="IdAnuncio" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Texto" ColumnName="Texto" />
+          <ScalarProperty Name="Comprador" ColumnName="Comprador" />
+          <ScalarProperty Name="Agente" ColumnName="Agente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NACIONALIDAD">
+      <EntityTypeMapping TypeName="TecModel.NACIONALIDAD">
+        <MappingFragment StoreEntitySet="NACIONALIDAD">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nacionalidad1" ColumnName="Nacionalidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OCUPACION">
+      <EntityTypeMapping TypeName="TecModel.OCUPACION">
+        <MappingFragment StoreEntitySet="OCUPACION">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERFIL_CLIENTE">
+      <EntityTypeMapping TypeName="TecModel.PERFIL_CLIENTE">
+        <MappingFragment StoreEntitySet="PERFIL_CLIENTE">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Predeterminado" ColumnName="Predeterminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROPIEDAD">
+      <EntityTypeMapping TypeName="TecModel.PROPIEDAD">
+        <MappingFragment StoreEntitySet="PROPIEDAD">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CantidadBanos" ColumnName="CantidadBanos" />
+          <ScalarProperty Name="IdUbicacion" ColumnName="IdUbicacion" />
+          <ScalarProperty Name="TipoPropiedad" ColumnName="TipoPropiedad" />
+          <ScalarProperty Name="TamanoLote" ColumnName="TamanoLote" />
+          <ScalarProperty Name="TamanoPropiedad" ColumnName="TamanoPropiedad" />
+          <ScalarProperty Name="Piscina" ColumnName="Piscina" />
+          <ScalarProperty Name="ParqueoVisitas" ColumnName="ParqueoVisitas" />
+          <ScalarProperty Name="Parqueo" ColumnName="Parqueo" />
+          <ScalarProperty Name="TipoPiso" ColumnName="TipoPiso" />
+          <ScalarProperty Name="CantidadNiveles" ColumnName="CantidadNiveles" />
+          <ScalarProperty Name="CantidadHabitaciones" ColumnName="CantidadHabitaciones" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Propietario" ColumnName="Propietario" />
+          <ScalarProperty Name="Gimnasio" ColumnName="Gimnasio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PUBLICO">
+      <EntityTypeMapping TypeName="TecModel.PUBLICO">
+        <MappingFragment StoreEntitySet="PUBLICO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="CantidadMensajes" ColumnName="CantidadMensajes" />
+          <ScalarProperty Name="IngresoInicial" ColumnName="IngresoInicial" />
+          <ScalarProperty Name="IngresoFinal" ColumnName="IngresoFinal" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="EdadInicial" ColumnName="EdadInicial" />
+          <ScalarProperty Name="EdadFinal" ColumnName="EdadFinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_ANUNCIO">
+      <EntityTypeMapping TypeName="TecModel.TIPO_ANUNCIO">
+        <MappingFragment StoreEntitySet="TIPO_ANUNCIO">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Predeterminado" ColumnName="Predeterminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_PISO">
+      <EntityTypeMapping TypeName="TecModel.TIPO_PISO">
+        <MappingFragment StoreEntitySet="TIPO_PISO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Piso" ColumnName="Piso" />
+          <ScalarProperty Name="Predeterminado" ColumnName="Predeterminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UBICACION">
+      <EntityTypeMapping TypeName="TecModel.UBICACION">
+        <MappingFragment StoreEntitySet="UBICACION">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+          <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="TecModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddCliente" FunctionName="TecModel.Store.AddCliente" />
+    <FunctionImportMapping FunctionImportName="NuevoCliente" FunctionName="TecModel.Store.NuevoCliente" />
+    <FunctionImportMapping FunctionImportName="RegistrarCliente" FunctionName="TecModel.Store.RegistrarCliente" />
+  </EntityContainerMapping>
+</Mapping>
