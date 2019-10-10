@@ -14,12 +14,6 @@ namespace tec_api.Models
     
     public partial class UBICACION
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UBICACION()
-        {
-            this.COMPRADOR = new HashSet<COMPRADOR>();
-            this.PROPIEDAD = new HashSet<PROPIEDAD>();
-        }
     
         public int Id { get; set; }
         public string Provincia { get; set; }

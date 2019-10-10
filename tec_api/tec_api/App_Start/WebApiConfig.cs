@@ -19,6 +19,8 @@ namespace tec_api
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //config.Filter.Add(new AuthorizeAttribute());
         }
     }
 }
