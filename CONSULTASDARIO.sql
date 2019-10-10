@@ -374,7 +374,7 @@ CREATE PROCEDURE UpPropiedad
 @Gimnasio BIT
 AS
 UPDATE PROPIEDAD
-SET CantidadBanos=@CantidadB,TamanoLote=@tLote,TamanoPropiedad=@tPro,Piscina=@Piscina,ParqueoVisitas=@parqueoV,Parqueo=@parqueo,CantidadNiveles=@niveles,CantidadHabitaciones=@Habitaciones,Precio=@Precio,Propietario=@propietario,Gimnasio=@Gimnasio,TipoPiso=getPISO(@Piso),IdUbicacion=GetDomicilio(@prov,@canton,@distrito),TipoPropiedad=@getTIPOP(@TipoP)
+SET CantidadBanos=@CantidadB,TamanoLote=@tLote,TamanoPropiedad=@tPro,Piscina=@Piscina,ParqueoVisitas=@parqueoV,Parqueo=@parqueo,CantidadNiveles=@niveles,CantidadHabitaciones=@Habitaciones,Precio=@Precio,Propietario=@propietario,Gimnasio=@Gimnasio,TipoPiso=dbo.getPISO(@Piso),IdUbicacion=dbo.GetDomicilio(@prov,@canton,@distrito),TipoPropiedad=dbo.getTIPOP(@TipoP)
 WHERE Id=@ID
 -------------VENDEDORES------------
 
