@@ -5,6 +5,9 @@ using System.Web;
 
 namespace tec_api.Models
 {
+    /**
+     * Modelo Ubicacion
+     * */
     public class Location
     {
         public int Id { get; set; }

@@ -5,6 +5,9 @@ using System.Web;
 
 namespace tec_api.Models
 {
+    /**
+     *Model Cliente 
+     **/
     public class Client
     {
         public string Username { get; set; }
