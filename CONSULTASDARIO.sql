@@ -1,3 +1,19 @@
+--GET PISO
+CREATE FUNCTION getPISO(@piso VARCHAR(30)) RETURNS INT
+AS
+BEGIN
+	DECLARE @ID INT
+	SET @ID=(SELECT Id FROM TIPO_PISO WHERE Piso=@piso)
+	RETURN @ID
+END
+---GET TIPO PROPIEDAD
+CREATE FUNCTION getTIPOP(@propi VARCHAR(30)) RETURNS INT
+AS
+BEGIN
+	DECLARE @ID INT
+	SET @ID=(SELECT Id FROM INMUEBLE WHERE TipoPropiedad=@propi)
+	RETURN @ID
+END
 --GET NACIONALIDAD
 CREATE FUNCTION getNacionalidadId(@nacionalidad VARCHAR(30) ) RETURNS INT
 AS
@@ -117,6 +133,20 @@ IF EXISTS(SELECT Id From ANUNCIO WHERE id=@idAnuncio)
 BEGIN
 	DELETE FROM ANUNCIO WHERE Id=@idAnuncio
 END
+
+CREATE PROCEDURE UpAnun
+@ID INT,
+@pro INT,
+@tipo VARCHAR(20),
+@tarjeta INT,
+@agente INT,
+@estado BIT,
+@venta BIT,
+@publico INT
+AS
+UPDATE ANUNCIO
+SET IdPropiedad=@pro,TipoAnuncio=@tipo,Tarjeta=@tarjeta,IdAgente=@agente,Estado=@estado,Venta=@venta,IdPublico=@publico
+WHERE Id=@ID
 ------------PUBLICO--------
 CREATE PROCEDURE AddPub 
 @fi DATE,
@@ -137,6 +167,21 @@ IF EXISTS(SELECT Id From PUBLICO WHERE id=@idPublico)
 BEGIN
 	DELETE FROM ANUNCIO WHERE Id=@idPublico
 END
+CREATE PROCEDURE UpPub
+@ID INT,
+@fi DATE,
+@ff DATE,
+@mensaje INT,
+@ingreso INT,
+@fingreso INT,
+@sexo BIT,
+@edadI INT,
+@edadf INT
+AS
+UPDATE PUBLICO
+SET FechaInicial=@fi,FechaFinal=@ff,CantidadMensajes=@mensaje,IngresoInicial=@ingreso,IngresoFinal=@fingreso,Sexo=@sexo,EdadInicial=@edadI,EdadFinal=@edadf
+WHERE Id=@ID
+
 ---------------PERFIL CLIENTE-------------
 CREATE PROCEDURE AddPcliente
 @nombre VARCHAR(50),
@@ -152,6 +197,13 @@ IF EXISTS(SELECT Nombre From PERFIL_CLIENTE WHERE Nombre=@nombre)
 BEGIN
 	DELETE FROM PERFIL_CLIENTE WHERE Nombre=@nombre
 END
+CREATE PROCEDURE UpPcliente
+@nombre VARCHAR(50),
+@Descrp VARCHAR(50)
+AS
+UPDATE PERFIL_CLIENTE
+SET Nombre=@nombre,Descripcion=@Descrp
+WHERE Nombre=@nombre
 ------------------TIPO ANUNCIO----------------
 CREATE PROCEDURE AddTAnuncio
 @nombre VARCHAR(50),
@@ -167,6 +219,13 @@ IF EXISTS(SELECT Nombre From TIPO_ANUNCIO WHERE Nombre=@nombre)
 BEGIN
 	DELETE FROM TIPO_ANUNCIO WHERE Nombre=@nombre
 END
+CREATE PROCEDURE UpTAnuncio
+@nombre VARCHAR(50),
+@precio INT
+AS
+UPDATE TIPO_ANUNCIO
+SET Nombre=@nombre,Precio=@precio
+WHERE Nombre=@nombre
 ------------------UBICACIONES------------
 CREATE PROCEDURE AddUbi
 @prov VARCHAR(50),
@@ -185,6 +244,15 @@ IF EXISTS(SELECT * From UBICACION WHERE (Provincia=@prov AND Canton=@canton AND 
 	BEGIN
 	DELETE FROM UBICACION WHERE (Provincia=@prov AND Canton=@canton AND Distrito=@distrito)
 	END
+CREATE PROCEDURE UpUbi
+@ID INT,
+@prov VARCHAR(50),
+@canton VARCHAR(50) ,
+@distrito VARCHAR(50)
+AS
+UPDATE UBICACION
+SET Provincia=@prov,Canton=@canton,Distrito=@distrito
+WHERE Id=@ID
 ----------OCUPACIONES---------
 CREATE PROCEDURE AddOcu
 @ocupacion VARCHAR(50)
@@ -199,7 +267,13 @@ IF EXISTS(SELECT Nombre FROM OCUPACION WHERE Nombre=@ocupacion)
 	BEGIN
 	DELETE FROM OCUPACION WHERE Nombre=@ocupacion
 	END
-
+CREATE PROCEDURE UpOcu
+@ocupacion VARCHAR(50),
+@ID INT
+AS
+UPDATE OCUPACION
+SET Nombre=@ocupacion
+WHERE Id=@ID
 ----------ADMIN----------
 CREATE PROCEDURE AddAdmin
 @username VARCHAR(50),
@@ -212,7 +286,7 @@ IF EXISTS(SELECT Username FROM USUARIO WHERE Username=@username)
 	END
 ELSE
 	BEGIN
-	SELECT 'EL USUARIO NO EXIXSTE'
+	SELECT 'EL USUARIO NO EXISTE'
 	END
 -----GESTION INMUEBLE----------
 CREATE PROCEDURE AddInmueble
@@ -227,4 +301,95 @@ AS
 IF EXISTS(SELECT TipoPropiedad FROM INMUEBLE WHERE TipoPropiedad=@mueble)
 	BEGIN
 	DELETE FROM INMUEBLE WHERE TipoPropiedad=@mueble
+	END
+CREATE PROCEDURE UpInmueble
+@mueble VARCHAR(50),
+@ID INT
+AS
+UPDATE INMUEBLE
+SET TipoPropiedad=@mueble
+WHERE Id=@ID
+
+-----------TIPO DE PISO-----------
+CREATE PROCEDURE AddTpiso
+@Tipo VARCHAR(30)
+AS
+INSERT INTO TIPO_PISO(Piso,Predeterminado)
+VALUES(@Tipo,0)
+
+CREATE PROCEDURE DelTpiso
+@piso VARCHAR(30)
+AS
+DELETE FROM TIPO_PISO WHERE Piso=@piso
+CREATE PROCEDURE UpTpiso
+@tipo VARCHAR(30),
+@ID INT
+As
+UPDATE TIPO_PISO
+SET Piso=@tipo
+WHERE Id=@ID
+-------------PROPIEDADES-----------
+CREATE PROCEDURE AddPropiedad
+@CantidadB int,
+@prov varchar(30),
+@canton varchar(30),
+@distrito varchar(30),
+@TipoP VARCHAR(20),
+@tLote INT,
+@tPro INT,
+@Piscina BIT,
+@parqueo BIT,
+@parqueoV BIT,
+@Piso VARCHAR(20),
+@niveles INT,
+@Habitaciones INT,
+@Precio INT,
+@propietario VARCHAR(30),
+@Gimnasio BIT
+AS
+INSERT INTO PROPIEDAD(CantidadBanos,IdUbicacion,TipoPropiedad,TamanoLote,TamanoPropiedad,Piscina,ParqueoVisitas,Parqueo,TipoPiso,CantidadNiveles,CantidadHabitaciones,Precio,Propietario,Gimnasio)
+VALUES(@CantidadB,GetDomicilio(@prov,@canton,@distrito),getTIPOP(@TipoP),@tLote,@tPro,@Piscina,@parqueoV,@parqueo,getPISO(@Piso),@niveles,@Habitaciones,@Precio,@propietario,@Gimnasio)
+
+CREATE PROCEDURE DelPropiedad(@ID INT)
+AS
+DELETE FROM PROPIEDAD WHERE Id=@ID
+
+CREATE PROCEDURE UpPropiedad
+@ID INT,
+@CantidadB int,
+@prov varchar(30),
+@canton varchar(30),
+@distrito varchar(30),
+@TipoP VARCHAR(20),
+@tLote INT,
+@tPro INT,
+@Piscina BIT,
+@parqueo BIT,
+@parqueoV BIT,
+@Piso VARCHAR(20),
+@niveles INT,
+@Habitaciones INT,
+@Precio INT,
+@propietario VARCHAR(30),
+@Gimnasio BIT
+AS
+UPDATE PROPIEDAD
+SET CantidadBanos=@CantidadB,TamanoLote=@tLote,TamanoPropiedad=@tPro,Piscina=@Piscina,ParqueoVisitas=@parqueoV,Parqueo=@parqueo,CantidadNiveles=@niveles,CantidadHabitaciones=@Habitaciones,Precio=@Precio,Propietario=@propietario,Gimnasio=@Gimnasio,TipoPiso=getPISO(@Piso),IdUbicacion=GetDomicilio(@prov,@canton,@distrito),TipoPropiedad=@getTIPOP(@TipoP)
+WHERE Id=@ID
+-------------VENDEDORES------------
+
+
+
+
+
+--------LOGIN CLIENTE---------
+CREATE PROCEDURE LogCliente(@username VARCHAR(50))
+AS
+IF EXISTS(SELECT Username FROM CLIENTE WHERE Username=@username)
+	BEGIN 
+	SELECT 'USUARIO CORRECTO'
+	END
+ELSE
+	BEGIN 
+	SELECT 'USUARIO NO EXISTE'
 	END
