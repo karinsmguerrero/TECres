@@ -84,9 +84,9 @@ CREATE PROCEDURE NuevoComprador
 @Sexo VARCHAR(2)
 AS	
 	DECLARE @DOMI INT
-	SET @DOMI=GetDomicilio(@Prov,@Canton,@Distrito)
+	SET @DOMI=dbo.GetDomicilio(@Prov,@Canton,@Distrito)
 	DECLARE @OCU INT
-	SET @OCU=GetOcupacion(@ocupacion)
+	SET @OCU=dbo.GetOcupacion(@ocupacion)
 	IF EXISTS(SELECT * FROM USUARIO
 		WHERE Username=@username)--Si existe el Username Ingresado
 		BEGIN--Inicia Sentencia
@@ -348,7 +348,7 @@ CREATE PROCEDURE AddPropiedad
 @Gimnasio BIT
 AS
 INSERT INTO PROPIEDAD(CantidadBanos,IdUbicacion,TipoPropiedad,TamanoLote,TamanoPropiedad,Piscina,ParqueoVisitas,Parqueo,TipoPiso,CantidadNiveles,CantidadHabitaciones,Precio,Propietario,Gimnasio)
-VALUES(@CantidadB,GetDomicilio(@prov,@canton,@distrito),getTIPOP(@TipoP),@tLote,@tPro,@Piscina,@parqueoV,@parqueo,getPISO(@Piso),@niveles,@Habitaciones,@Precio,@propietario,@Gimnasio)
+VALUES(@CantidadB,dbo.GetDomicilio(@prov,@canton,@distrito),dbo.getTIPOP(@TipoP),@tLote,@tPro,@Piscina,@parqueoV,@parqueo,dbo.getPISO(@Piso),@niveles,@Habitaciones,@Precio,@propietario,@Gimnasio)
 
 CREATE PROCEDURE DelPropiedad(@ID INT)
 AS
