@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TECresModelStoreContainer" CdmEntityContainer="TecEntities">
+    <EntitySetMapping Name="UBICACION">
+      <EntityTypeMapping TypeName="TECresModel.UBICACION">
+        <MappingFragment StoreEntitySet="UBICACION">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+          <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
