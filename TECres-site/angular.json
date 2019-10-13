@@ -21,15 +21,28 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/locale",
+                "output": "/assets/locale/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/images",
+                "output": "/assets/images/"
+              },
+              { 
+                "glob": "pdf.worker.js", 
+                "input": "node_modules/ngx-extended-pdf-viewer/ngx-extended-pdf-viewer/assets", 
+                "output": "/assets/" 
+              }
             ],
             "styles": [
               "src/styles.css",
               "src/css/style.css",
               "src/lib/animate/animate.css",
               "src/lib/animate/animate.min.css",
-              "src/lib/bootstrap/css/bootstrap.css",
-              "src/lib/bootstrap/css/bootstrap.min.css",
               "src/lib/ionicons/css/ionicons.css",
               "src/lib/ionicons/css/ionicons.min.css",
               "src/lib/owlcarousel/assets/owl.carousel.css",
@@ -52,7 +65,9 @@
               "src/lib/scrollreveal/scrollreveal.js",
               "src/lib/scrollreveal/scrollreveal.min.js",
               "src/lib copy/angular-animate.min.js",
-              "src/lib copy/angular-route.min.js"
+              "src/lib copy/angular-route.min.js",
+              "node_modules/ngx-extended-pdf-viewer/assets/pdf.js",
+              "node_modules/ngx-extended-pdf-viewer/assets/viewer.js"
             ]
           },
           "configurations": {

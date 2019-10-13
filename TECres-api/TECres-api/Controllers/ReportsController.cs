@@ -9,14 +9,45 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
+using System.Web.Services.Protocols;
+using TECres_api.ReportingServicesLocalServer;
 using TECres_api.Reports.CrystalReports;
+using ParameterValue = TECres_api.ReportingServicesLocalServer.ParameterValue;
 
 namespace TECres_api.Controllers
 {
     public class ReportsController : ApiController
     {
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("api/getAdvertisementReport")]
+        public HttpResponseMessage GetAdvertisementReport()
+        {
+            ReportExecutionService rs = new ReportExecutionService();
+            rs.Credentials = CredentialCache.DefaultCredentials;
+            rs.Url = "http://desktop-nsa2cvd/reportserver/reportexecution2005.asmx";
+            rs.ExecutionHeaderValue = new ExecutionHeader();
+            var executionInfo = new ExecutionInfo();
+            executionInfo = rs.LoadReport("/TECresReport/Report", null);
+            
+            string deviceInfo = "<DeviceInfo><Toolbar>False</Toolbar></DeviceInfo>";
+            string mimeType;
+            string encoding;
+            string[] streamId;
+            Warning[] warning;
+
+            var result = rs.Render("PDF", deviceInfo, out mimeType, out encoding, out encoding, out warning, out streamId);
+            //File.WriteAllBytes(@"D:\\Files\file.pdf", result);
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Content = new ByteArrayContent(result);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+
+            return response;
+        }
+
         [AllowAnonymous]
         [Route("api/getfile")]
         public HttpResponseMessage GetTestFile()
@@ -61,7 +92,7 @@ namespace TECres_api.Controllers
             connectionInfo.Password = "karina";
 
             ReportDocument rd = new ReportDocument();
-            
+
             rd.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/Reports/CrystalReports/CrystalReport1.rpt"));
             rd.SetDatabaseLogon("Admin", "karina", "localhost/SQLEXPRESS", "TECres");
             // set report connection for main report
@@ -90,7 +121,30 @@ namespace TECres_api.Controllers
             }
         }
 
+        [AllowAnonymous]
+        [Route("api/getpdf")]
+        [HttpGet]
+        //Codigo tomado de: https://www.craftedforeveryone.com/download-sql-server-reporting-service-ssrs-report-as-pdf-using-c-sharp/
+        public void SSRS()
+        {
+            ReportExecutionService rs = new ReportExecutionService();
+            rs.Credentials = CredentialCache.DefaultCredentials;
+            rs.Url = "http://desktop-nsa2cvd/reportserver/reportexecution2005.asmx";
+
+            rs.ExecutionHeaderValue = new ExecutionHeader();
+            var executionInfo = new ExecutionInfo();
+            executionInfo = rs.LoadReport("/TECresReport/Report", null);
 
 
+            string deviceInfo = "<DeviceInfo><Toolbar>False</Toolbar></DeviceInfo>";
+            string mimeType;
+            string encoding;
+            string[] streamId;
+            Warning[] warning;
+
+            var result = rs.Render("PDF", deviceInfo, out mimeType, out encoding, out encoding, out warning, out streamId);
+            File.WriteAllBytes(@"D:\\Files\file.pdf", result);
+
+        }
     }
 }

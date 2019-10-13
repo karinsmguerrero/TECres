@@ -13,4 +13,8 @@ export class DownloadService {
     alert("pdf");
     return this.http.get(this.rootURL + '/api/getfile2');
   }
+
+  getPDF2():string {
+    return '/assets/proyecto.pdf';
+  }
 }
