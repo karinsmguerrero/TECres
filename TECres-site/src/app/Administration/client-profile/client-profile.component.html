@@ -1,0 +1,67 @@
+<app-admin-navigation></app-admin-navigation>
+<div class="row">
+    <div class="col-lg-12 col1"></div>
+</div>
+<body>
+    <div id="registerVendedor">
+        <div class="container">
+            <div id="registerVendedor-row" class="row justify-content-center align-items-center">
+                <div id="registerVendedor-column" class="col-md-6">
+                    <div id="registerVendedor-box" class="col-md-12">
+                        <form id="registerVendedor-form" class="form" action="" method="post">
+                            <h3 class="text-center text-info">Registrar un nuevo tipo de cliente</h3>
+                            <div class="form-group">
+                                <label for="name" class="text-info">Nombre:</label><br>
+                                <input required ngModel #name="ngModel" type="text" name="name" id="name" class="form-control">
+                                <div class="alert alert-danger" *ngIf=" name.touched && !(name.valid)">
+                                    <div *ngIf="name.errors?.required">
+                                        Debe ingresar el nombre.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion" class="text-info">Descripción:</label><br>
+                                <input required ngModel #descripcion="ngModel" type="text"  name="descripcion" id="descripcion" class="form-control">
+                                <div class="alert alert-danger" *ngIf="descripcion.touched && !(descripcion.valid)">
+                                    <div *ngIf="descripcion.errors?.required">
+                                        Debe ingresar una descripción.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group"> 
+                                <button type="button" class="btn btn-info btn-md" [disabled]="!(name.valid && descripcion.valid)" data-dismiss="modal">
+                                    Registrar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<!--Lista de Inmuebles-->
+<h1>Perfiel Clientes</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tipo Propiedad</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Inmueble of service.inmuebleList">
+            <td>{{Inmueble.Id}}</td>
+            <td>{{Inmueble.TipoPropiedad}}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default">Editar</button>
+                    <button type="button" class="btn btn-danger">Eliminar</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
