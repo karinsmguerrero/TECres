@@ -12,12 +12,12 @@ namespace web_api.Controllers
     {
         [HttpGet]
         [Route("api/GetInmuebles")]
-        public HttpResponseMessage GetClientes()
+        public HttpResponseMessage GetInmuebles()
         {
             using (var db = new TecEntities())
             {
 
-                var listaInmuebles= db.Database.SqlQuery<Inmueble>("SELECT Id,TipoPropiedad" +
+                var listaInmuebles= db.Database.SqlQuery<Inmueble>("SELECT Id,TipoPropiedad,Predeterminado" +
                     " FROM INMUEBLE").ToList();
                 
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaInmuebles);

@@ -10,6 +10,6 @@ namespace web_api.Models
     {
         public int Id { get; set; }
         public string TipoPropiedad { get; set; }
-        //public boolean Predeterminado { get; set; }
+        public bool Predeterminado { get; set; }
     }
 }

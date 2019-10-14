@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Microsoft.AspNetCore.Cors;
 using web_api.Models;
 
 namespace web_api.Controllers
@@ -30,7 +31,7 @@ namespace web_api.Controllers
 
         [HttpPost]
         [Route("api/AddCliente")]
-        public HttpResponseMessage AddCliente([FromBody]ClienteU c)
+        public HttpResponseMessage AddCliente([FromBody] ClienteU c)
         {
             try
             {
@@ -39,17 +40,18 @@ namespace web_api.Controllers
                 {
                     SqlParameter[] parameters = new SqlParameter[]
                     {
-                        new SqlParameter("@username", c.Username),
+                        new SqlParameter("@username", c.Username),new SqlParameter("@contrasena", c.Contrasena),
                         new SqlParameter("@nombre", c.Nombre), new SqlParameter("@pApellido", c.PrimerApellido),
                         new SqlParameter("@sApellido", c.SegundoApellido), new SqlParameter("@fecha", "2017-02-08"),
                         new SqlParameter("@nacionalidad", c.Nacionalidad), new SqlParameter("@cedula", c.Cedula),
-                        new SqlParameter("@perfil", c.PerfilCliente)
+                        new SqlParameter("@perfil", c.PerfilCliente),new SqlParameter("@correo", c.Correo)
 
 
                     };
 
-                    var status = db.Database.ExecuteSqlCommand("EXEC NuevoCliente @username, @nombre, @pApellido, " +
-                        "@sApellido, @fecha, @nacionalidad, @cedula, @perfil", parameters);
+                    var status = db.Database.ExecuteSqlCommand("EXEC NuevoCliente @username, @contrasena," +
+                        "@correo, @nombre, @pApellido, @sApellido, @fecha, @nacionalidad, @cedula, " +
+                        "@perfil", parameters);
 
                     return this.Request.CreateResponse(HttpStatusCode.OK, status);
                 }
@@ -67,6 +69,7 @@ namespace web_api.Controllers
         [HttpPost]
         [Route("api/PostCliente")]
         [AllowAnonymous]
+        [EnableCors]
         public HttpResponseMessage PostCliente()
         {
             try

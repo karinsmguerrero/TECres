@@ -10,6 +10,6 @@ namespace web_api.Models
     {
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        //public Nullable<bool>  Predeterminado { get; set; }
+        public Nullable<bool>  Predeterminado { get; set; }
     }
 }
