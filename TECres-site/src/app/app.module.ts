@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -19,8 +18,6 @@ import { TypeComponent } from './Administration/Advertisement/type/type.componen
 import { StatisticsComponent } from './Administration/Advertisement/statistics/statistics.component';
 import { AssignmentComponent } from './Administration/Advertisement/assignment/assignment.component';
 import { BillingComponent } from './Administration/billing/billing.component';
-import { RealStateManagementComponent } from './Clients/real-state-management/real-state-management.component';
-import { AudienceManagementComponent } from './Clients/audience-management/audience-management.component';
 import { AdvertisingManagementComponent } from './Clients/advertising-management/advertising-management.component';
 import { ClientRegisterComponent } from './Clients/client-register/client-register.component';
 import { BuyerManagementComponent } from './General/buyer-management/buyer-management.component';
@@ -38,6 +35,15 @@ import { ForbiddenComponent } from './Miscellaneous/forbidden/forbidden.componen
 import { SignUpComponent } from './login/sign-up/sign-up.component';
 import { SignInComponent } from './login/sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
+import { GhomeComponent } from './General/ghome/ghome.component';
+import { RegisterComponent } from './General/register/register.component';
+import { ChomeComponent } from './Clients/chome/chome.component';
+import { CreatePropertyComponent } from './Clients/create-property/create-property.component';
+import { MyPropertiesComponent } from './Clients/my-properties/my-properties.component';
+import { MyProfileComponent } from './Clients/my-profile/my-profile.component';
+import { AdminNavigationComponent } from './Miscellaneous/admin-navigation/admin-navigation.component';
+import { ClientNavigationComponent } from './Miscellaneous/client-navigation/client-navigation.component';
+import { GeneralNavigationComponent } from './Miscellaneous/general-navigation/general-navigation.component';
 
 @NgModule({
   declarations: [
@@ -55,8 +61,6 @@ import { HomeComponent } from './home/home.component';
     StatisticsComponent,
     AssignmentComponent,
     BillingComponent,
-    RealStateManagementComponent,
-    AudienceManagementComponent,
     AdvertisingManagementComponent,
     ClientRegisterComponent,
     BuyerManagementComponent,
@@ -69,7 +73,16 @@ import { HomeComponent } from './home/home.component';
     WelcomeComponent,
     SignInComponent,
     ForbiddenComponent,
-    HomeComponent
+    HomeComponent,
+    GhomeComponent,
+    RegisterComponent,
+    ChomeComponent,
+    CreatePropertyComponent,
+    MyPropertiesComponent,
+    MyProfileComponent,
+    AdminNavigationComponent,
+    ClientNavigationComponent,
+    GeneralNavigationComponent
   ],
   imports: [
     BrowserModule,
