@@ -10,30 +10,17 @@ import { DownloadService } from 'src/app/services/download.service';
 export class AdvertisementComponent implements OnInit {
 
   page:number = 1;
-  pdfSrc:string = '';
+  pdfSrc:any;
+  pdfsource: any;
 
-  constructor(private pdfService: DownloadService) { }
+  constructor(private downloadService: DownloadService) { }
 
   ngOnInit() {
-    this.pdfSrc = this.pdfService.getPDF2();
-  }
-
-  onFileSelected() {
-    let img: any = document.querySelector("#file");
-
-    if(typeof (FileReader) !== 'undefined') {
-      let reader = new FileReader();
-
-      reader.onload = (e:any) => {
-        this.pdfSrc = e.target.result;
-      }
-
-      reader.readAsArrayBuffer(img.files[0]);
-    }
+    this.pdfSrc = this.downloadService.getPDF2();
   }
 
   download(){
-    this.pdfService.downloadFile();
+    this.downloadService.downloadFile();
   }
 
 }
