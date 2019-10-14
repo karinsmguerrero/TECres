@@ -32,4 +32,8 @@ export class AdvertisementComponent implements OnInit {
     }
   }
 
+  download(){
+    this.pdfService.downloadFile();
+  }
+
 }
