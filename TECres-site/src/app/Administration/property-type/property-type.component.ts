@@ -20,7 +20,7 @@ export class PropertyTypeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.service.getEstate();
+    this.service.get();
     this.serviceLocation.getProvincia();
     this.serviceFloor.getFloors();
     
