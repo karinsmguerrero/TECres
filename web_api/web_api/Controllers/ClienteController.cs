@@ -15,7 +15,7 @@ namespace web_api.Controllers
         
         [HttpGet]
         [Route("api/GetClientes")]
-        public HttpResponseMessage GetClientes()
+        public HttpResponseMessage GetClientes5()
         {
             using (var db = new TecEntities())
             {

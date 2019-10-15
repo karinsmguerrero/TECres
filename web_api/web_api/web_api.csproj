@@ -299,6 +299,7 @@
     <Compile Include="Controllers\OcupacionController.cs" />
     <Compile Include="Controllers\PerfilesController.cs" />
     <Compile Include="Controllers\PisoController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\UbicacionController.cs" />
     <Compile Include="Controllers\UBICACIONsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
