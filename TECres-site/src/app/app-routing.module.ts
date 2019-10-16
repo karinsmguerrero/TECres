@@ -35,6 +35,7 @@ import { StatisticsComponent } from './Administration/Advertisement/statistics/s
 import { ClientProfileComponent } from './Administration/client-profile/client-profile.component';
 import { SiteAdminsComponent } from './Administration/site-admins/site-admins.component';
 import { EstateComponent } from './Administration/estate/estate.component';
+import { GridPropertyComponent } from './General/grid-property/grid-property.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
   { path: 'report', component: SalesComponent},
   { path: 'clientprofile', component: ClientProfileComponent},
   { path: 'estates', component: EstateComponent},
+  { path: 'grid-property', component: GridPropertyComponent},
   
   {
     path: 'signup', component: LoginComponent,

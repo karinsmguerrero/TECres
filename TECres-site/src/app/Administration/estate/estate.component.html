@@ -17,11 +17,11 @@
         Agregar<span class="glyphicon glyphicon-pencil" ></span>
     </button>
 </h1>
-<table class="table table-striped">
+<table class="table table-striped" >
     <thead>
         <tr>
             <th>Tipo Propiedad</th>
-            <th>Actions</th>
+            <th>Accciones</th>
         </tr>   
     </thead>
     <tbody>
@@ -32,7 +32,7 @@
                 <div *ngIf=!Estate.Predeterminado  class="btn-group" role="group" aria-label="...">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#EstateUpdateModal" (click)="selectEstate(Estate)">Editar</button>
                     <button  type="button" class="btn btn-danger" (click)="onDelete(Estate.Id)">Eliminar
-                        <span class="glyphicon glyphicon-trash" hidden="false"></span>
+                        <span class="glyphicon glyphicon-trash" ></span>
                     </button>
                 </div>
             </td>

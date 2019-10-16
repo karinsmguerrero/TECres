@@ -46,6 +46,7 @@ import { ClientNavigationComponent } from './Miscellaneous/client-navigation/cli
 import { GeneralNavigationComponent } from './Miscellaneous/general-navigation/general-navigation.component';
 import { EstateComponent } from './Administration/estate/estate.component';
 import { ConstantsService } from './services/constants.service';
+import { GridPropertyComponent } from './General/grid-property/grid-property.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { ConstantsService } from './services/constants.service';
     AdminNavigationComponent,
     ClientNavigationComponent,
     GeneralNavigationComponent,
-    EstateComponent
+    EstateComponent,
+    GridPropertyComponent
   ],
   imports: [
     BrowserModule,
