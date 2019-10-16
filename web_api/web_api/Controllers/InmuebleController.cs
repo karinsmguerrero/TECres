@@ -46,7 +46,7 @@ namespace web_api.Controllers
 
         /**
          * Metodo PUT
-         * Inserta un nuevo tipo de inmueble
+         * Actualiza  tipo de inmueble
          * */
         [HttpPut]
         [Route("api/PutInmueble")]
@@ -74,7 +74,6 @@ namespace web_api.Controllers
                 SqlParameter parameter = new SqlParameter("@id", Id);
                 var status = db.Database.ExecuteSqlCommand("DELETE FROM INMUEBLE " +
                 "WHERE Id = @id", parameter);
-
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }

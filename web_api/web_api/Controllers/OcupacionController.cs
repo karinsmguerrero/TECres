@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -23,5 +24,57 @@ namespace web_api.Controllers
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaOcupaciones);
             }
         }
+          
+        /* Metodo POST
+         * Inserta una nueva Ocupacion
+         * */
+        [HttpPost]
+        [Route("api/PostOcupacion")]
+        public HttpResponseMessage InsertartOcupacion([FromBody] string ocupacion)
+        {
+            using (var db = new TecEntities())
+            {
+                SqlParameter parameter = new SqlParameter("@ocupacion", ocupacion);
+
+                var status = db.Database.ExecuteSqlCommand("INSERT INTO OCUPACION(Nombre)" +
+                "VALUES (@ocupacion)", parameter);
+
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+            }
+        }
+
+        /**
+         * Metodo PUT
+         * Actualizala ocupacion
+         * */
+        [HttpPut]
+        [Route("api/PutOcupacion")]
+        public HttpResponseMessage PutOcupacion([FromBody] String Ocupacion)
+        {
+            using (var db = new TecEntities())
+            {
+                SqlParameter parameter = new SqlParameter("@nombre", Ocupacion);
+                var status = db.Database.ExecuteSqlCommand("UPDATE OCUPACION SET Nombre = @nombre " +
+                "WHERE Id = @id", parameter);
+
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+            }
+        }
+
+        [HttpDelete]
+        [Route("api/DeleteOcupacion")]
+        public HttpResponseMessage DeleteInmueble(int Id)
+        {
+            using (var db = new TecEntities())
+            {
+                SqlParameter parameter = new SqlParameter("@id", Id);
+                var status = db.Database.ExecuteSqlCommand("DELETE FROM OCUPACION " +
+                "WHERE Id = @id", parameter);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+            }
+        }
+
+
+
     }
 }

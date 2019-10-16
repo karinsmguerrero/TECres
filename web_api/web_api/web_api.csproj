@@ -293,12 +293,15 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\FotosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InmuebleController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NacionalidadController.cs" />
     <Compile Include="Controllers\OcupacionController.cs" />
     <Compile Include="Controllers\PerfilesController.cs" />
     <Compile Include="Controllers\PisoController.cs" />
+    <Compile Include="Controllers\PropiedadController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\UbicacionController.cs" />
     <Compile Include="Controllers\UBICACIONsController.cs" />

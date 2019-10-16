@@ -12,9 +12,16 @@ namespace web_api.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UBICACION
+    public class UBICACION
     {
         public int Id { get; set; }
+        public string Provincia { get; set; }
+        public string Canton { get; set; }
+        public string Distrito { get; set; }
+    }
+
+    public class Ubicacion_aux
+    {
         public string Provincia { get; set; }
         public string Canton { get; set; }
         public string Distrito { get; set; }

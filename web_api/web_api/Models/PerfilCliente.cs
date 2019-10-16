@@ -12,4 +12,10 @@ namespace web_api.Models
         public string Descripcion { get; set; }
         public Nullable<bool>  Predeterminado { get; set; }
     }
+    public class Perfil
+    {
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public Nullable<bool> Predeterminado { get; set; }
+    }
 }
