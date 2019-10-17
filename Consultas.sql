@@ -139,18 +139,17 @@ BEGIN
 	IF EXISTS(SELECT Username FROM CLIENTE 
 	WHERE Username=@username)
 		BEGIN
-			SET @cuenta= (SELECT PerfilCliente FROM
-			CLIENTE WHERE Username=@username)
+			SET @cuenta= 'Cliente'
 		END
 	IF EXISTS(SELECT Username FROM ADMINISTRADOR 
 	WHERE Username=@username)
 		BEGIN
-			SET @cuenta= 'ADMINISTRAD0R605'
+			SET @cuenta= 'Administrador'
 		END
 	IF EXISTS(SELECT Username FROM COMPRADOR 
 	WHERE Username=@username)
 		BEGIN
-			SET @cuenta= 'C0MPRAD0R605'
+			SET @cuenta= 'Comprador
 		END
 	RETURN @cuenta
 END
