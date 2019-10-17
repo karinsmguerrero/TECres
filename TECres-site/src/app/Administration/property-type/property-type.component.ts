@@ -19,28 +19,8 @@ export class PropertyTypeComponent implements OnInit {
   constructor(private service: EstateManagementService, private serviceLocation : LocationManagementService, private serviceFloor: FloorManagementService) { }
 
   ngOnInit() {
-
-    this.service.getEstate();
-    this.serviceLocation.getProvincia();
-    this.serviceFloor.getFloors();
     
   }
 
-  populateDrop(estate : Estate) {
-    
-  }
-
-  loadCantones(provincia : string){
-    this.Provincia = provincia
-    this.serviceLocation.getCanton(provincia);
-  }
-
-  loadDistritos(canton : string){
-    this.Canton= canton;
-    this.serviceLocation.getDistrito(this.Provincia,this.Canton);
-  }
-
-  selectDistrito(distrito: string){
-    this.Distrito=distrito;
-  }
+ 
 }

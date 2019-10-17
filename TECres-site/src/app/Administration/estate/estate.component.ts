@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EstateManagementService } from '../../services/estate-management.service';
+import { NgForm } from '@angular/forms';
+import { Estate } from '../../models/estate.model';
 
 @Component({
   selector: 'app-estate',
@@ -8,10 +10,14 @@ import { EstateManagementService } from '../../services/estate-management.servic
 })
 export class EstateComponent implements OnInit {
 
+  estate: Estate;
+
   constructor(private serviceEstate: EstateManagementService) { }
 
   ngOnInit() {
-    this.serviceEstate.getEstate();
+    this.serviceEstate.get();
+  
   }
 
+ 
 }

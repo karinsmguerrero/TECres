@@ -1,1 +1,36 @@
-<p>messaging works!</p>
+<app-client-navigation></app-client-navigation>
+
+<div class="container" style="padding-top: 5%;">
+  <div class="row">
+    <div class="col-md-12 col-lg-8">
+      <div class="title-single-box">
+        <h1 class="title-single">Hablando con: {{this.chatService.Receiver}}</h1>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <!--/ Intro Single End /-->
+
+  <!--/ Agents Grid Star /-->
+  <section class="jumbotron col-md-8">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <th>Usuario</th>
+          <th>Mensaje</th>
+          <th></th>
+          <th></th>
+          <tr *ngFor="let message of this.chatService.Chat.messages">
+            <td>{{message.user}}</td>
+            <td>{{message.message}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </section>
+</div>
+<!--/ Agents Grid End /-->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
