@@ -30,7 +30,7 @@ namespace web_api.Controllers
          * */
         [HttpPost]
         [Route("api/PostOcupacion")]
-        public HttpResponseMessage InsertartOcupacion([FromBody] string ocupacion)
+        public HttpResponseMessage InsertartOcupacion(string ocupacion)
         {
             using (var db = new TecEntities())
             {
@@ -49,7 +49,7 @@ namespace web_api.Controllers
          * */
         [HttpPut]
         [Route("api/PutOcupacion")]
-        public HttpResponseMessage PutOcupacion([FromBody] String Ocupacion)
+        public HttpResponseMessage PutOcupacion( String Ocupacion)
         {
             using (var db = new TecEntities())
             {

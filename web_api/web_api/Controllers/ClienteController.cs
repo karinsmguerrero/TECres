@@ -22,7 +22,7 @@ namespace web_api.Controllers
 
                 var clientList = db.Database.SqlQuery<Cliente>("SELECT Username,Nombre,PrimerApellido,SegundoApellido," +
                     "Cedula,PerfilCliente,Nacionalidad" +
-                    " FROM LISTA_CLIENTES").ToList();
+                    " FROM vCLIENTES").ToList();
 
                 Console.WriteLine(clientList);
                 return this.Request.CreateResponse(HttpStatusCode.OK, clientList);

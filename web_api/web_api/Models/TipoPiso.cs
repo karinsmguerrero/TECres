@@ -9,6 +9,6 @@ namespace web_api.Models
     {
         public int Id  { get; set; }
         public string  Piso { get; set; }
-        public Boolean Predeterminado  { get; set; }
+        public Nullable<bool> Predeterminado  { get; set; }
     }
 }

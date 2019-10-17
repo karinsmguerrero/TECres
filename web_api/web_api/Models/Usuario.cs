@@ -15,4 +15,7 @@ namespace web_api.Models
         public string SegundoApellido { get; set; }
         public System.DateTime FechaIngreso { get; set; }
     }
+
+    
+
 }

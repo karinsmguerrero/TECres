@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -24,5 +25,28 @@ namespace web_api.Controllers
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaFotos);
             }
         }
+
+        /* Metodo POST
+         * Inserta una nueva Ocupacion
+         * */
+        [HttpPost]
+        [Route("api/PostFoto")]
+        public HttpResponseMessage InsertartFoto([FromBody] FotosAux foto)
+        {
+            using (var db = new TecEntities())
+            {
+                SqlParameter[] parameters = new SqlParameter[]{
+                new SqlParameter("@propiedad", foto.IdPropiedad),
+                new SqlParameter("@ruta", foto.Ruta)
+
+            };
+
+                var status = db.Database.ExecuteSqlCommand("INSERT INTO FOTOS(IdPropiedad, Ruta)" +
+                "VALUES (@propiedad, @ruta)", parameters);
+
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+            }
+        }
     }
+
 }

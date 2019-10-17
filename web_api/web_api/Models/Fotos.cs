@@ -10,6 +10,10 @@ namespace web_api.Models
         public int Id { get; set; }
         public string Ruta { get; set; }
         public int IdPropiedad { get; set; }
-
+    }
+    public class FotosAux
+    {
+        public string Ruta { get; set; }
+        public int IdPropiedad { get; set; }
     }
 }
