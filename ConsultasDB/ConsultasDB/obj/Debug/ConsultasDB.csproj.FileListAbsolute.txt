@@ -1,9 +1,0 @@
-C:\Users\geral\Documents\Github\TECres\ConsultasDB\ConsultasDB\obj\Debug\ConsultasDB.csprojAssemblyReference.cache
-C:\Users\geral\Documents\Github\TECres\ConsultasDB\ConsultasDB\obj\Debug\ConsultasDB.Properties.Resources.resources
-C:\Users\geral\Documents\Github\TECres\ConsultasDB\ConsultasDB\obj\Debug\ConsultasDB.csproj.GenerateResource.cache
-C:\Users\geral\Documents\Github\TECres\ConsultasDB\ConsultasDB\obj\Debug\ConsultasDB.csproj.CoreCompileInputs.cache
-C:\Users\geral\Documents\Github\TECres\ConsultasDB\ConsultasDB\bin\Debug\ConsultasDB.exe.config
-C:\Users\geral\Documents\Github\TECres\ConsultasDB\ConsultasDB\bin\Debug\ConsultasDB.exe
-C:\Users\geral\Documents\Github\TECres\ConsultasDB\ConsultasDB\bin\Debug\ConsultasDB.pdb
-C:\Users\geral\Documents\Github\TECres\ConsultasDB\ConsultasDB\obj\Debug\ConsultasDB.exe
-C:\Users\geral\Documents\Github\TECres\ConsultasDB\ConsultasDB\obj\Debug\ConsultasDB.pdb
