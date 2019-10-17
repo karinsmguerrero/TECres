@@ -46,6 +46,9 @@ import { ClientNavigationComponent } from './Miscellaneous/client-navigation/cli
 import { GeneralNavigationComponent } from './Miscellaneous/general-navigation/general-navigation.component';
 import { EstateComponent } from './Administration/estate/estate.component';
 import { ConstantsService } from './services/constants.service';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+import {DpDatePickerModule} from 'ng2-date-picker';
 
 @NgModule({
   declarations: [
@@ -93,7 +96,9 @@ import { ConstantsService } from './services/constants.service';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    PdfViewerModule,
+    AngularDateTimePickerModule
   ],
   /*providers: [UserService,AuthGuard,
     ,

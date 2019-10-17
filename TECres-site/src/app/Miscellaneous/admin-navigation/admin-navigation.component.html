@@ -45,8 +45,10 @@
                         Anuncios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" routerLink="/users/agents">Aprobación de anuncios</a>
-                        <a class="dropdown-item" routerLink="/users/admins">Asignación de anuncios</a>
+                        <a class="dropdown-item" routerLink="/advertising/approval">Aprobación de anuncios</a>
+                        <a class="dropdown-item" routerLink="/advertising/assignement">Asignación de anuncios</a>
+                        <a class="dropdown-item" routerLink="/advertising/type">Tipos de anuncios</a>
+                        <a class="dropdown-item" routerLink="/advertising/statistics">Generacion de Estadisticas</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -55,18 +57,23 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" routerLink="/users/agents">Agentes vendedores</a>
-                        <a class="dropdown-item" routerLink="/users/admins">Tipos de inmuebles</a>
-                        <a class="dropdown-item" routerLink="/users/agents">Ubicaciones</a>
-                        <a class="dropdown-item" routerLink="/users/admins">Tipos de anuncios</a>
+                        <a class="dropdown-item" routerLink="/propertytype">Tipos de inmuebles</a>
+                        <a class="dropdown-item" routerLink="/location">Ubicaciones</a>
                         <a class="dropdown-item" routerLink="/users/agents">Perfil de clientes</a>
-                        <a class="dropdown-item" routerLink="/users/admins">Ocupaciones</a>
-                        <a class="dropdown-item" routerLink="/users/agents">Administradores</a>
-                        <a class="dropdown-item" routerLink="/users/clients"></a>
+                        <a class="dropdown-item" routerLink="/careers">Ocupaciones</a>
+                        <a class="dropdown-item" routerLink="/users/admins">Administradores</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/careers">Generacion de Estadisticas</a>
-                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Reportes
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" routerLink="/reports/sales">Ventas</a>
+                      <a class="dropdown-item" routerLink="/reports/commisions">Comisiones</a>
+                      <a class="dropdown-item" routerLink="/reports/advertisement">Anuncios</a>
+                  </div>
+              </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/careers">Facturacion</a>
                 </li>

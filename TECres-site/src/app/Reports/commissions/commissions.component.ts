@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DownloadService } from 'src/app/services/download.service';
 
 @Component({
   selector: 'app-commissions',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommissionsComponent implements OnInit {
 
-  constructor() { }
+  pdfSrc:any;
+
+  constructor(private downloadService: DownloadService) { }
 
   ngOnInit() {
+   
+  }
+  
+  get(){
+    this.downloadService.getCommissionReport();
+    this.pdfSrc = '/assets/Files/CommissionReport.pdf'
+  }
+
+  download(){
+    this.downloadService.downloadCommissionReport();
   }
 
 }

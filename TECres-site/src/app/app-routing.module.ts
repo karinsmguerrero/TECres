@@ -35,6 +35,11 @@ import { StatisticsComponent } from './Administration/Advertisement/statistics/s
 import { ClientProfileComponent } from './Administration/client-profile/client-profile.component';
 import { SiteAdminsComponent } from './Administration/site-admins/site-admins.component';
 import { EstateComponent } from './Administration/estate/estate.component';
+import { GeneralNavigationComponent } from './Miscellaneous/general-navigation/general-navigation.component';
+import { ClientNavigationComponent } from './Miscellaneous/client-navigation/client-navigation.component';
+import { AdminNavigationComponent } from './Miscellaneous/admin-navigation/admin-navigation.component';
+import { NavigationComponent } from './Miscellaneous/navigation/navigation.component';
+import { CommissionsComponent } from './Reports/commissions/commissions.component';
 
 
 const routes: Routes = [
@@ -62,18 +67,19 @@ const routes: Routes = [
   { path: 'users/admins', component: SiteAdminsComponent},
   { path: 'advertising/statistics', component: StatisticsComponent},
   { path: 'users/clients', component: ClientProfileComponent},
-  { path: 'report', component: SalesComponent},
+  { path: 'reports/sales', component: SalesComponent},
+  { path: 'reports/commisions', component: CommissionsComponent},
+  { path: 'reports/advertisement', component: AdvertisementComponent},
   { path: 'clientprofile', component: ClientProfileComponent},
   { path: 'estates', component: EstateComponent},
+
   
-  {
-    path: 'signup', component: LoginComponent,
-    children: [{ path: '', component: SignUpComponent }]
-},
-{
-    path: 'signin', component: LoginComponent,
-    children: [{ path: '', component: SignInComponent }]
-}
+  { path: 'gnav', component: GeneralNavigationComponent},
+  { path: 'cnav', component: ClientNavigationComponent},
+  { path: 'anav', component: AdminNavigationComponent},
+  
+  { path: 'signup', component: SignUpComponent},
+  { path: 'signin', component: LoginComponent}
   /*{ path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: WelcomeComponent, canActivate: [AuthGuard] },
   { path: 'search', component: SearchComponent },
