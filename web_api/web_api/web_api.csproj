@@ -307,6 +307,7 @@
     <Compile Include="Controllers\PerfilesController.cs" />
     <Compile Include="Controllers\PisoController.cs" />
     <Compile Include="Controllers\PropiedadController.cs" />
+    <Compile Include="Controllers\PublicoController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\UbicacionController.cs" />
     <Compile Include="Controllers\UBICACIONsController.cs" />
