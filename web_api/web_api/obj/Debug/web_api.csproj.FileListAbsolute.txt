@@ -257,3 +257,4 @@ C:\Users\geral\Documents\Github\api_tecres\TECres\web_api\web_api\bin\System.Run
 C:\Users\geral\Documents\Github\api_tecres\TECres\web_api\web_api\bin\System.Text.Encodings.Web.xml
 C:\Users\geral\Documents\Github\api_tecres\TECres\web_api\web_api\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\geral\Documents\Github\api_tecres\TECres\web_api\web_api\bin\System.Web.Http.Cors.xml
+C:\Users\geral\Documents\Github\api_tecres\TECres\web_api\web_api\obj\Debug\web_api.csprojAssemblyReference.cache
