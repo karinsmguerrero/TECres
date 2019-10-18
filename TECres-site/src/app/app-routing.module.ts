@@ -36,6 +36,9 @@ import { ClientProfileComponent } from './Administration/client-profile/client-p
 import { SiteAdminsComponent } from './Administration/site-admins/site-admins.component';
 import { EstateComponent } from './Administration/estate/estate.component';
 import { GridPropertyComponent } from './General/grid-property/grid-property.component';
+import { MessagingComponent } from './General/messaging/messaging.component';
+import { CommissionsComponent } from './Reports/commissions/commissions.component';
+
 
 
 const routes: Routes = [
@@ -51,6 +54,7 @@ const routes: Routes = [
   { path: 'myprofile', component: MyPropertiesComponent},
 
 
+  
   { path: 'welcome', component: WelcomeComponent},
   { path: 'advertising/approval', component: ApprovalComponent},
   { path: 'advertising/assignement', component: AssignmentComponent},
@@ -63,19 +67,16 @@ const routes: Routes = [
   { path: 'users/admins', component: SiteAdminsComponent},
   { path: 'advertising/statistics', component: StatisticsComponent},
   { path: 'users/clients', component: ClientProfileComponent},
-  { path: 'report', component: SalesComponent},
+  { path: 'reports/sales', component: SalesComponent},
+  { path: 'reports/commisions', component: CommissionsComponent},
+  { path: 'reports/advertisement', component: AdvertisementComponent},
   { path: 'clientprofile', component: ClientProfileComponent},
   { path: 'estates', component: EstateComponent},
-  { path: 'grid-property', component: GridPropertyComponent},
-  
-  {
-    path: 'signup', component: LoginComponent,
-    children: [{ path: '', component: SignUpComponent }]
-},
-{
-    path: 'signin', component: LoginComponent,
-    children: [{ path: '', component: SignInComponent }]
-}
+  { path: 'chat', component: MessagingComponent},
+
+
+  { path: 'signup', component: SignUpComponent},
+  { path: 'signin', component: LoginComponent}
   /*{ path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: WelcomeComponent, canActivate: [AuthGuard] },
   { path: 'search', component: SearchComponent },

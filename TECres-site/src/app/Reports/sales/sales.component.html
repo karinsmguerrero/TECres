@@ -1,1 +1,32 @@
-<button (click)="download()">Download</button>
+<app-admin-navigation></app-admin-navigation>
+<div class="container" style="padding-top: 5%;">
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="title-single-box">
+        <h1 class="title-single">Reporte de ventas</h1>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row text-center">
+    <div class="col">
+      <h3>Fecha inicial: </h3>
+      <angular2-date-picker [(ngModel)]="startDate" [settings]="startSettings"></angular2-date-picker>
+    </div>
+    <div class="col">
+      <h3>Fecha final: </h3>
+      <angular2-date-picker [(ngModel)]="endDate" [settings]="endSettings"></angular2-date-picker>
+    </div>
+      
+    <div class="col">
+      <button class="btn btn-a" (click)="get()"> Generar reporte </button>
+    </div>
+    <div class="col">
+      <button class="btn btn-a" (click)="download()"> Descargar reporte </button>
+    </div>
+  </div>
+
+  <pdf-viewer [src]="pdfSrc" [render-text]="true" [show-all]="true" style="display: block;">
+  </pdf-viewer>
+</div>

@@ -47,6 +47,8 @@ import { GeneralNavigationComponent } from './Miscellaneous/general-navigation/g
 import { EstateComponent } from './Administration/estate/estate.component';
 import { ConstantsService } from './services/constants.service';
 import { GridPropertyComponent } from './General/grid-property/grid-property.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,9 @@ import { GridPropertyComponent } from './General/grid-property/grid-property.com
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    PdfViewerModule,
+    AngularDateTimePickerModule
   ],
   /*providers: [UserService,AuthGuard,
     ,
