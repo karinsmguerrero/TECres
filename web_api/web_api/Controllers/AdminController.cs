@@ -46,7 +46,7 @@ namespace web_api.Controllers
 
                     };
 
-                    var status = db.Database.ExecuteSqlCommand("EXEC NuevoAdmin @username, @contrasena," +
+                    var status = db.Database.ExecuteSqlCommand("EXEC NuevoAdministrador @username, @contrasena," +
                         "@correo, @nombre, @pApellido, @sApellido, @fecha, @cedula ", parameters);
 
                     return this.Request.CreateResponse(HttpStatusCode.OK, status);
@@ -74,6 +74,40 @@ namespace web_api.Controllers
             }
         }
 
+
+        [HttpPost]
+        [Route("api/PutAdmin")]
+        public HttpResponseMessage PutAdministrador([FromBody] Administrador a)
+        {
+            try
+            {
+
+                using (var db = new TecEntities())
+                {
+                    SqlParameter[] parameters = new SqlParameter[]
+                    {
+                        new SqlParameter("@username", a.Username),new SqlParameter("@contrasena", a.Contrasena),
+                        new SqlParameter("@nombre", a.Nombre), new SqlParameter("@pApellido", a.PrimerApellido),
+                        new SqlParameter("@sApellido", a.SegundoApellido), new SqlParameter("@fecha", a.FechaIngreso),
+                        new SqlParameter("@cedula", a.Cedula),
+                        new SqlParameter("@correo", a.Correo)
+
+
+                    };
+
+                    var status = db.Database.ExecuteSqlCommand("EXEC ActualizarAdministrador @username, @contrasena," +
+                        "@correo, @nombre, @pApellido, @sApellido, @fecha, @cedula ", parameters);
+
+                    return this.Request.CreateResponse(HttpStatusCode.OK, status);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR :" + ex);
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
+
+        }
 
     }
 }

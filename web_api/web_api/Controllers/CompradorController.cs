@@ -29,8 +29,8 @@ namespace web_api.Controllers
         }
         
         [HttpPost]
-        [Route("api/AddCliente")]
-        public HttpResponseMessage AddCliente([FromBody] Comprador c)
+        [Route("api/AddComprador")]
+        public HttpResponseMessage AddComprador([FromBody] Comprador c)
         {
             try
             {
@@ -75,6 +75,43 @@ namespace web_api.Controllers
                 return this.Request.CreateResponse(HttpStatusCode.OK, status);
             }
         }
+
+
+        [HttpPost]
+        [Route("api/PutComprador")]
+        public HttpResponseMessage PutComprador([FromBody] Comprador c)
+        {
+            try
+            {
+
+
+                using (var db = new TecEntities())
+                {
+                    SqlParameter[] parameters = new SqlParameter[]
+                    {
+                        new SqlParameter("@username", c.Username),new SqlParameter("@contrasena", c.Contrasena),
+                        new SqlParameter("@nombre", c.Nombre), new SqlParameter("@pApellido", c.PrimerApellido),
+                        new SqlParameter("@sApellido", c.SegundoApellido), new SqlParameter("@fecha", c.FechaIngreso),
+                        new SqlParameter("@ocupacion", c.IdOcupacion), new SqlParameter("@cedula", c.Cedula),
+                        new SqlParameter("@perfil", c.Sexo),new SqlParameter("@correo", c.Correo),new SqlParameter("@domicilio", c.Domicilio),
+                        new SqlParameter("@nacimiento", c.FechaNacimiento),new SqlParameter("@mensualidad", c.IngresoMensual)
+                    };
+
+                    var status = db.Database.ExecuteSqlCommand("EXEC ActualizarComprador @username, @contrasena," +
+                        "@correo, @nombre, @pApellido, @sApellido, @fecha, @cedula, @ocupacion," +
+                        "@mensualidad, @domicilio, @sexo, @nacimiento", parameters);
+
+                    return this.Request.CreateResponse(HttpStatusCode.OK, status);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR :" + ex);
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
+
+        }
+
 
     }
 }

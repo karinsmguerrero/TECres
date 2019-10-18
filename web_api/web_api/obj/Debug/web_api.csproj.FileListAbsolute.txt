@@ -257,6 +257,7 @@ C:\Users\geral\Documents\Github\api_tecres\TECres\web_api\web_api\bin\System.Run
 C:\Users\geral\Documents\Github\api_tecres\TECres\web_api\web_api\bin\System.Text.Encodings.Web.xml
 C:\Users\geral\Documents\Github\api_tecres\TECres\web_api\web_api\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\geral\Documents\Github\api_tecres\TECres\web_api\web_api\bin\System.Web.Http.Cors.xml
+<<<<<<< HEAD
 C:\Users\Karina\Downloads\web_api\web_api\web_api\bin\web_api.dll.config
 C:\Users\Karina\Downloads\web_api\web_api\web_api\bin\web_api.dll
 C:\Users\Karina\Downloads\web_api\web_api\web_api\bin\web_api.pdb
@@ -515,3 +516,6 @@ C:\Users\Karina\Downloads\web_api\web_api\web_api\bin\Microsoft.CodeDom.Provider
 C:\Users\Karina\Downloads\web_api\web_api\web_api\obj\Debug\web_api.csproj.CopyComplete
 C:\Users\Karina\Downloads\web_api\web_api\web_api\obj\Debug\web_api.dll
 C:\Users\Karina\Downloads\web_api\web_api\web_api\obj\Debug\web_api.pdb
+=======
+C:\Users\geral\Documents\Github\api_tecres\TECres\web_api\web_api\obj\Debug\web_api.csprojAssemblyReference.cache
+>>>>>>> 6eba59e59d16de1f38bff0c4e5002cb3948e02de
