@@ -294,6 +294,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CompradorController.cs" />
     <Compile Include="Controllers\FacturaController.cs" />
     <Compile Include="Controllers\FotosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
