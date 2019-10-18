@@ -46,8 +46,6 @@ namespace web_api.Controllers
                         new SqlParameter("@ocupacion", c.IdOcupacion), new SqlParameter("@cedula", c.Cedula),
                         new SqlParameter("@perfil", c.Sexo),new SqlParameter("@correo", c.Correo),new SqlParameter("@domicilio", c.Domicilio),
                         new SqlParameter("@nacimiento", c.FechaNacimiento),new SqlParameter("@mensualidad", c.IngresoMensual)
-
-
                     };
 
                     var status = db.Database.ExecuteSqlCommand("EXEC NuevoComprador @username, @contrasena," +
