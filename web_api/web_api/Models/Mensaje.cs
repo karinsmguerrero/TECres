@@ -12,7 +12,17 @@ namespace web_api.Models
         public System.DateTime Fecha { get; set; }
         public System.TimeSpan Hora { get; set; }
         public string Texto { get; set; }
-        public string Comprador { get; set; }
-        public string Agente { get; set; }
+        public string Emisor { get; set; }
+        public string Receptor { get; set; }
+        public Boolean Estado { get; set; }
+        
+    }
+
+    public class MensajeU
+    {
+        public int IdAnuncio { get; set; }
+        public string Emisor { get; set; }
+        public string Receptor { get; set; }
+
     }
 }
