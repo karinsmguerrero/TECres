@@ -16,10 +16,8 @@ namespace web_api.Controllers
         {
             using (var db = new TecEntities())
             {
-
                 var listaPropiedades = db.Database.SqlQuery<PropiedadU>("SELECT *" +
                     " FROM vPROPIEDADES").ToList();
-
                 return this.Request.CreateResponse(HttpStatusCode.OK, listaPropiedades);
             }
         }

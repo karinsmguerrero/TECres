@@ -57,5 +57,29 @@ namespace web_api.Controllers
             }
         }
 
+
+        [HttpPut]
+        [Route("api/PutAnuncio")]
+        public HttpResponseMessage PutAnuncio(Anuncio a)
+        {
+            using (var db = new TecEntities())
+            {
+                SqlParameter[] parameters = new SqlParameter[]
+                    {
+                        new SqlParameter("@idAgente", a.IdAgente),new SqlParameter("@tarjeta", a.Tarjeta),
+                        new SqlParameter("@tipoAnuncio", a.TipoAnuncio), new SqlParameter("@propiedad", a.IdPropiedad),
+                        new SqlParameter("@venta", a.Venta), new SqlParameter("@fechaIn", a.FechaInicial),
+                        new SqlParameter("@fechaFin", a.FechaFinal),new SqlParameter("@idAnun", a.Id)
+
+                    };
+                
+                var status = db.Database.ExecuteSqlCommand("UPDATE ANUNCIO SET IdAgente=@idAgente, Tarjeta=@tarjeta," +
+                    "TipoAnuncio=@tipoAnuncio, IdPropiedad=@propiedad, Venta=@venta, FechaInicial=@FechaInicial, FechaFinal=@fechaFin " +
+                "WHERE Id = @idAnun", parameters);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+            }
+        }
+
+
     }
 }

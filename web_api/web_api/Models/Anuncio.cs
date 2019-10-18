@@ -15,5 +15,7 @@ namespace web_api.Models
         public Nullable<bool> Estado { get; set; }
         public Nullable<bool> Venta { get; set; }
         public Nullable<int> IdPublico { get; set; }
+        public System.DateTime FechaInicial { get; set; }
+        public System.DateTime FechaFinal { get; set; }
     }
 }
