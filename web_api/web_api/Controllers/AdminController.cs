@@ -61,7 +61,18 @@ namespace web_api.Controllers
         }
 
 
-
+        [HttpDelete]
+        [Route("api/DeleteAdmin")]
+        public HttpResponseMessage DeleteAdmin(string username)
+        {
+            using (var db = new TecEntities())
+            {
+                SqlParameter parameter = new SqlParameter("@user", username);
+                var status = db.Database.ExecuteSqlCommand("DELETE FROM ADMINISTRADOR " +
+                "WHERE Username = @user", parameter);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+            }
+        }
 
 
     }

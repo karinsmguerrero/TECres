@@ -9,8 +9,8 @@ namespace web_api.Models
     public class Usuario
     {
         public string Username { get; set; }
-        //public string  Correo { get; set; }
-        //public string Contrasena  { get; set; }
+        public string  Correo { get; set; }
+        public string Contrasena  { get; set; }
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
         public System.DateTime FechaIngreso { get; set; }

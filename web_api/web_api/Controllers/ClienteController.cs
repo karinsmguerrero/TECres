@@ -64,7 +64,54 @@ namespace web_api.Controllers
 
         }
 
+        [HttpDelete]
+        [Route("api/DeleteCliente")]
+        public HttpResponseMessage DeleteCliente(string username)
+        {
+            using (var db = new TecEntities())
+            {
+                SqlParameter parameter = new SqlParameter("@user", username);
+                var status = db.Database.ExecuteSqlCommand("DELETE FROM CLIENTE " +
+                "WHERE Username = @user", parameter);
+                return this.Request.CreateResponse(HttpStatusCode.OK, status);
+            }
+        }
 
-        
+
+        [HttpPost]
+        [Route("api/PutCliente")]
+        public HttpResponseMessage PutCliente([FromBody] ClienteU c)
+        {
+            try
+            {
+
+                using (var db = new TecEntities())
+                {
+                    SqlParameter[] parameters = new SqlParameter[]
+                    {
+                        new SqlParameter("@username", c.Username),new SqlParameter("@contrasena", c.Contrasena),
+                        new SqlParameter("@nombre", c.Nombre), new SqlParameter("@pApellido", c.PrimerApellido),
+                        new SqlParameter("@sApellido", c.SegundoApellido), new SqlParameter("@fecha", c.FechaIngreso),
+                        new SqlParameter("@nacionalidad", c.Nacionalidad), new SqlParameter("@cedula", c.Cedula),
+                        new SqlParameter("@perfil", c.PerfilCliente),new SqlParameter("@correo", c.Correo)
+
+
+                    };
+
+                    var status = db.Database.ExecuteSqlCommand("EXEC ActualizarCliente @username, @contrasena," +
+                        "@correo, @nombre, @pApellido, @sApellido, @fecha, @nacionalidad, @cedula, " +
+                        "@perfil", parameters);
+
+                    return this.Request.CreateResponse(HttpStatusCode.OK, status);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR :" + ex);
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
+
+        }
+
     }
 }
