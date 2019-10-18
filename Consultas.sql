@@ -149,7 +149,7 @@ BEGIN
 	IF EXISTS(SELECT Username FROM COMPRADOR 
 	WHERE Username=@username)
 		BEGIN
-			SET @cuenta= 'Comprador
+			SET @cuenta= 'Comprador'
 		END
 	RETURN @cuenta
 END
@@ -201,6 +201,40 @@ AS
 		END
 
 GO
+
+
+/***************************************************************************************
+*Tipo: Proceso
+*Descripción: Registro de un nuevo Cliente
+*Párametros Entrada: [Username:VARCHAR(50), Contraseña:VARCHAR(50), 
+* Correo:VARCHAR(50),Nombre:VARCHAR(15), Primer Apellido:VARCHAR(15),
+* Segundo Apellido VARCHAR(15), Fecha Ingreso:DATE, IdNacionalidad:INT,
+* Cedula:INT, Perfil Cliente:VARCHAR(20)]
+*Parámetros Salida: N/A
+***************************************************************************************/
+CREATE PROCEDURE ActualizarCliente 
+@username VARCHAR(50),
+@contrasena VARCHAR(50),
+@correo VARCHAR(50),
+@nombre VARCHAR(15),
+@pApellido VARCHAR(15),
+@sApellido VARCHAR(15),
+@fecha DATE,
+@nacionalidad INT,
+@cedula INT,
+@perfil VARCHAR(20)
+AS	
+
+	UPDATE USUARIO SET Contrasena=@contrasena,Nombre=@nombre,
+	PrimerApellido=@pApellido,SegundoApellido=@sApellido,
+	FechaIngreso=@fecha,Correo=@correo
+	WHERE Username=@username
+
+	UPDATE CLIENTE SET IdNacionalidad=@nacionalidad,
+	Cedula=@cedula,PerfilCliente=@perfil
+	WHERE Username=@username
+
+GO
 /***************************************************************************************
 *Tipo: Proceso
 *Descripción: Registro Administrador
@@ -236,7 +270,35 @@ AS
 		END
 				
 GO
+/***************************************************************************************
+*Tipo: Proceso
+*Descripción: Actualizar Administrador
+*Párametros Entrada: [Username:VARCHAR(50), Contraseña:VARCHAR(50), 
+* Correo:VARCHAR(50),Nombre:VARCHAR(15), Primer Apellido:VARCHAR(15),
+* Segundo Apellido VARCHAR(15), Fecha Ingreso:DATE, IdNacionalidad:INT,
+* Cedula:INT]
+*Parámetros Salida: N/A
+***************************************************************************************/
+CREATE PROCEDURE ActualizarAdministrador
+@username VARCHAR(50),
+@contrasena VARCHAR(50),
+@correo VARCHAR(50),
+@nombre VARCHAR(15),
+@pApellido VARCHAR(15),
+@sApellido VARCHAR(15),
+@fecha DATE,
+@cedula INT
+AS	
 
+	UPDATE USUARIO SET Contrasena=@contrasena,Nombre=@nombre,
+	PrimerApellido=@pApellido,SegundoApellido=@sApellido,
+	FechaIngreso=@fecha,Correo=@correo
+	WHERE Username=@username
+	UPDATE ADMINISTRADOR SET Cedula=@cedula
+	WHERE Username=@username
+		
+				
+GO
 /***************************************************************************************
 *Tipo: Proceso
 *Descripción: Registro de comprador
@@ -277,6 +339,43 @@ AS
 		END
 
 GO
+
+/***************************************************************************************
+*Tipo: Proceso
+*Descripción: Update de comprador
+*Párametros Entrada: [Username:VARCHAR(50), Contraseña:VARCHAR(50), 
+* Correo:VARCHAR(50),Nombre:VARCHAR(15), Primer Apellido:VARCHAR(15),
+* Segundo Apellido VARCHAR(15), Fecha Ingreso:DATE, IdDomicilio:INT,
+* Cedula:INT, IdOcupacion:INT, Ingresos:INT,Sexo:VARCHAR(5),Nacimiento:DATE]
+*Parámetros Salida: N/A
+***************************************************************************************/
+CREATE PROCEDURE ActualizarComprador 
+@username VARCHAR(50),
+@contrasena VARCHAR(50),
+@correo VARCHAR(50),
+@nombre VARCHAR(15),
+@pApellido VARCHAR(15),
+@sApellido VARCHAR(15),
+@fecha DATE,
+@cedula INT,
+@ocupacion INT,
+@ingreso INT,
+@domicilio INT,
+@sexo VARCHAR(5),
+@nacimiento DATE
+AS	
+	
+	UPDATE USUARIO SET Contrasena=@contrasena,Nombre=@nombre,
+	PrimerApellido=@pApellido,SegundoApellido=@sApellido,FechaIngreso=@fecha,Correo=@correo
+    WHERE Username=@username
+			
+	UPDATE COMPRADOR SET FechaNacimiento=@nacimiento,
+	IdOcupacion=@ocupacion,Domicilio=@domicilio,Sexo=@sexo
+	WHERE Username=@username
+
+
+
+GO
 --INSERCION de Facturas
 /***************************************************************************************
 *Tipo: Proceso
@@ -298,6 +397,26 @@ AS
 	SET @monto= dbo.cantDias(@fechaInicial, @fechaFinal)*@costoAnuncio
 	INSERT INTO FACTURA(Monto,IdAnuncio,Fecha) 
 	VALUES(@monto,@id_anuncio,@fecha)
+
+GO
+
+
+/***************************************************************************************
+*Tipo: Proceso
+*Descripción: Agregar nueva Factura
+*Párametros Entrada: Id Anuncio:INT, Fecha:DATE
+*Parámetros Salida: N/A
+***************************************************************************************/
+CREATE PROCEDURE getMensajes 
+@id_anuncio INT,
+@usuarioA VARCHAR(50),
+@usuarioB VARCHAR(50)
+AS	
+	SELECT Id,IdAnuncio,Fecha,Hora,Texto,Emisor,Receptor,Estado 
+	FROM MENSAJE 
+	WHERE (@usuarioA=Receptor AND @usuarioB=Emisor) 
+	OR (@usuarioA=Emisor AND @usuarioB=Receptor)
+
 
 GO
 
@@ -791,3 +910,38 @@ AS DECLARE @idPub VARCHAR(50)
 	SELECT @idPub = del.IdPublico FROM DELETED del;
 	DELETE FROM PUBLICO WHERE Id=@idPub;
 	PRINT 'TRIGGER SE ELIMINARON TODOS LOS REGISTROS DEL ANUNCIO'
+
+
+GO
+/***************************************************************************************
+*Tipo: TRIGGER
+*Descripción: Se le suma un valor a la cantidad de mensajes
+*Acción: INSERT
+*Párametros Entrada: N/A
+*Parámetros Salida: N/A
+***************************************************************************************/
+CREATE TRIGGER TRIG_IN_MENSAJE ON MENSAJE
+FOR INSERT 
+AS DECLARE @id VARCHAR(50)
+	SELECT @id = inserted.IdAnuncio FROM inserted;
+	UPDATE PUBLICO SET CantidadMensajes=(CantidadMensajes+1) WHERE Id=@id
+	PRINT 'TRIGGER SE ELIMINARON TODOS LOS REGISTROS DEL ANUNCIO'
+
+
+GO
+/***************************************************************************************
+*Tipo: TRIGGER
+*Descripción: No permite eliminar ni alterar tablas tablas. 
+*Tampoco permite eliminar tablas
+*Acción: DELETE, DROP
+*Párametros Entrada: N/A
+*Parámetros Salida: N/A
+***************************************************************************************/
+CREATE TRIGGER DROP_SAFE 
+ON DATABASE 
+FOR DROP_TABLE , ALTER_TABLE, DROP_DATABASE
+AS 
+   PRINT 'DEBE DESHABLITAR EL TRIGGER DROP_SAFE' 
+   ROLLBACK
+;
+
