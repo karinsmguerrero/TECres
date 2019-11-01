@@ -334,8 +334,8 @@ AS
 			INSERT INTO USUARIO(Username,Contrasena,Nombre,PrimerApellido,SegundoApellido,FechaIngreso,Correo)
             VALUES(@username,@contrasena,@nombre,@pApellido,@sApellido,@fecha,@correo)
 
-			INSERT INTO COMPRADOR(Username,FechaNacimiento,IdOcupacion,Domicilio,Sexo)
-					VALUES(@username,@nacimiento,@ocupacion,@domicilio,@sexo)
+			INSERT INTO COMPRADOR(Username,FechaNacimiento,IdOcupacion,Domicilio,Sexo,IngresoMensual)
+					VALUES(@username,@nacimiento,@ocupacion,@domicilio,@sexo,@ingreso)
 		END
 
 GO
@@ -429,12 +429,9 @@ GO
 CREATE PROCEDURE getCredenciales
 @username VARCHAR(50)
 AS	
-	IF NOT EXISTS(SELECT * FROM USUARIO
+	IF EXISTS(SELECT * FROM USUARIO
 		WHERE Username=@username)--Si existe el Username Ingresado
-		BEGIN--Inicia Sentencia
-			SELECT '-1'
-		END
-	ELSE
+		
 		BEGIN
 			SELECT (SELECT dbo.getTipoCuenta(@username)) AS TipoCuenta,
 			(SELECT dbo.getNombreCompleto(@username))AS Nombre, 
@@ -442,6 +439,7 @@ AS
 			FROM USUARIO
 			WHERE Username=@username
 		END
+
 
 GO
 
@@ -925,7 +923,7 @@ FOR INSERT
 AS DECLARE @id VARCHAR(50)
 	SELECT @id = inserted.IdAnuncio FROM inserted;
 	UPDATE PUBLICO SET CantidadMensajes=(CantidadMensajes+1) WHERE Id=@id
-	PRINT 'TRIGGER SE ELIMINARON TODOS LOS REGISTROS DEL ANUNCIO'
+	PRINT 'TRIGGER IN MENSAJE'
 
 
 GO
@@ -939,9 +937,10 @@ GO
 ***************************************************************************************/
 CREATE TRIGGER DROP_SAFE 
 ON DATABASE 
-FOR DROP_TABLE , ALTER_TABLE, DROP_DATABASE
+FOR DROP_TABLE , ALTER_TABLE
 AS 
    PRINT 'DEBE DESHABLITAR EL TRIGGER DROP_SAFE' 
    ROLLBACK
 ;
 
+GO

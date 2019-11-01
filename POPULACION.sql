@@ -581,14 +581,17 @@ VALUES ('Concreto Lujado',1),('Porcelanato',1),('Ceramica',1);
 GO
 INSERT INTO OCUPACION(Nombre)
 VALUES('Ingeniero'),
-('Medico'),('Estilista'),('Enfermero'),('Veterinario');
+('Medico'),('Estilista'),('Enfermero'),('Veterinario'),('Electricista'),('Diseñador'),
+('Deportista'),('Emp.Domestica'), ('Maestro'),('Doctor');
 
 GO
 INSERT INTO TIPO_ANUNCIO(Nombre,Precio,Predeterminado)
-VALUES ('Normal',1000,1),('Destacado',2000,1),('Oro',3000,1),('Platino',4000,1),('Diamante',800000,0);
+VALUES ('Normal',1000,1),('Destacado',2000,1),('Oro',3000,1),
+('Platino',4000,1),('Diamante',800000,0),('VIP',100000,0);
 GO
 INSERT INTO INMUEBLE(TipoPropiedad, Predeterminado)
-VALUES('Lote',1),('Casa',1),('Apartamento',1),('Finca',0),('Ganaderia',0),('Oficina',0),('Granja',0)
+VALUES('Lote',1),('Casa',1),('Apartamento',1),('Finca',0),
+('Ganaderia',0),('Oficina',0),('Granja',0),('Condominio',0)
 
 GO
 INSERT INTO PERFIL_CLIENTE(Nombre,Descripcion,Predeterminado)
@@ -605,6 +608,8 @@ GO
 EXEC NuevoCliente 'mariop','ds65w65r25','mario1234@gmail.com','Mario','Delgado','Sanchez','2017-08-28',13,11359056,'Arquitecto'
 GO
 EXEC NuevoAdministrador 'admin','12356789','admin@tecres.com','Admin','Tec','Res','2017-03-28',11111111
+GO
+EXEC NuevoAdministrador 'juan90','abcdefgh','juan23@tecres.com','Juan','Jimenez','Azofeifa','2017-10-28',116930879
 
 GO
 insert into PROPIEDAD (Titulo, CantidadBanos, IdUbicacion, TipoPropiedad, TamanoLote, TamanoPropiedad, Piscina, ParqueoVisitas, Parqueo, TipoPiso, CantidadNiveles, CantidadHabitaciones, Precio, Gimnasio,Propietario) values ('Parisian Group', 3, 110, 3, 846, 1107, 1, 1, 1, 2, 1, 2, 614819846, 1,'jp');
@@ -638,5 +643,42 @@ INSERT INTO FOTOS(Ruta,IdPropiedad)
 VALUES ('src/assets/img/a.jpg',1),('src/assets/img/b.jpg',1),('src/assets/img/c.jpg',1),('src/assets/img/d.jpg',1),('src/assets/img/e.jpg',1),
 ('src/assets/img/f.jpg',2),('src/assets/img/g.jpg',2),('src/assets/img/h.jpg',2),('src/assets/img/a.jpg',3),('src/assets/img/a.jpg',4),
 ('src/assets/img/a.jpg',5),('src/assets/img/a.jpg',6)
+
+GO
+EXEC NuevoComprador 'carlo89', 'hikoahsnd','carlos7987@hotmail.com','Carlos','Figueroa','Guti','2017-03-28',2332,2,800,5,'M','1980-03-28'
+GO
+EXEC NuevoComprador 'juana123', 'd558sc2s','juanita7987@hotmail.com','Juana','Marin','Montoya','2017-03-28',23123,2,800,5,'F','1980-03-28'
+GO
+EXEC NuevoComprador 'ricardo92', 'swdsacs','ricardom@gmail.com','Ricardo','Sanchez','Urrutia','2017-03-28',43221,2,800,5,'M','1980-03-28'
+
+
+GO
+INSERT INTO PUBLICO(CantidadMensajes,IngresoInicial,IngresoFinal,Sexo,EdadInicial,EdadFinal,Provincia)
+VALUES
+(0,500000,1000000,'F',25,40,'Alajuela'),
+(0,2000000,5000000,'M',30,50,'Heredia'),
+(0,5000000,10000000,'F',30,45,'San Jose'),
+(0,5000000,10000000,'F',30,45,'Puntarenas'),
+(0,8000000,10000000,'F',30,45,'San Jose'),
+(0,7000000,10000000,'F',30,45,'San Jose')
+
+GO
+INSERT INTO ANUNCIO(IdPropiedad,TipoAnuncio,Tarjeta,IdAgente,IdPublico,FechaInicial,FechaFinal)
+VALUES 
+(1, 'Normal', 123456789, 'jp', 1, '2019-09-08', '2019-10-05'),
+(5, 'Oro', 12656789, 'opl', 2, '2019-10-08', '2019-09-05'),
+(6, 'Diamante', 179456789, 'mariop', 3, '2019-10-01', '2019-10-09'),
+(7, 'Normal', 123456789, 'jp', 1, '2019-10-01', '2019-10-05'),
+(8, 'Oro', 12656789, 'opl', 2, '2019-10-01', '2019-06-05'),
+(9, 'Diamante', 179456789, 'mariop', 3, '2019-09-01', '2019-10-09')
+
+INSERT INTO MENSAJE(IdAnuncio,Fecha,Hora,Texto,Emisor,Receptor)
+VALUES
+(1,'2017-03-28','8:45','Hola, Me interesa','juana123','jp'),
+(1,'2017-03-28','9:45','Hola, Claro','jp','juana123'),
+(1,'2017-03-28','9:45','¿En que le puedo ayudar?','jp','juana123'),
+(2,'2017-03-28','8:45','Hola, Me interesa','juana123','jp'),
+(2,'2017-03-28','9:45','Hola, Claro','jp','juana123'),
+(2,'2017-03-28','9:45','¿En que le puedo ayudar?','jp','juana123')
 
 GO
